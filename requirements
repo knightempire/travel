@@ -1,0 +1,6 @@
+Libraries:
+    Tensorflow
+    pandas
+    numpy
+    matplotlib
+    sckit-learn
