@@ -4,3 +4,4 @@ Libraries:
     numpy
     matplotlib
     sckit-learn
+    pytorch
