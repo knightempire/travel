@@ -1,0 +1,7 @@
+# Node Modules
+node_modules/
+
+# Sensitive information
+/travel-70aa4-firebase-adminsdk-tuj3z-c18402faaa.json 
+
+.env
