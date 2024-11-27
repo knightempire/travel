@@ -1,0 +1,15 @@
+{
+  "name": "travel",
+  "version": "1.0.0",
+  "description": "This is the **backend** module of the Travel Recommendation System project. Built with **Node.js** and **Express**, it serves as the backbone for the application's API and integrates with Firebase for user management and data storage.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "firebase-admin": "^13.0.1"
+  }
+}
