@@ -93,12 +93,16 @@ const SigninPage = () => {
                     </button>
                   </div>
                 </form>
-                <p className="text-center text-base font-medium text-body-color">
-                  Didn't receive the code?{" "}
-                  <Link href="#" className="text-primary hover:underline">
-                    Resend
-                  </Link>
-                </p>
+                <p className="mb-6 text-center text-base font-medium text-body-color">
+                    Didn&apos;t receive the code?{" "}
+                    <Link href="#" className="text-primary hover:underline">
+                      Resend
+                    </Link>
+                  </p>
+
+
+
+                
               </div>
             </div>
           </div>
