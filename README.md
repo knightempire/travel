@@ -88,35 +88,67 @@ yarn install
 
 ### 4. Running the Project
 
-Frontend (Next.js)
+#### Switching Branch and Pulling Latest Changes
+
+To ensure you're on the correct branch and get the latest changes, follow these steps:
+
+1. **Switch to the `frontend` branch**:
+    ```bash
+    git checkout frontend
+    ```
+
+2. **Pull the latest changes from the remote repository**:
+    ```bash
+    git pull
+    ```
+
+#### Frontend (Next.js)
+
 Once the dependencies are installed, you can run the frontend development server using Next.js:
 
+1. **Navigate to the frontend directory** (if you're not already in it):
+    ```bash
+    cd frontend
+    ```
 
-```bash
-# Navigate to the frontend directory if you haven't already
-cd frontend
+2. **Run the Next.js development server**:
+    ```bash
+    npm run dev
+    ```
+    
+3. **To test the production build**, you can run:
+    ```bash
+    npm run build
+    ```
+    This will build the Next.js project for production.
 
-# Run the Next.js development server
-npm run dev
-# or if you prefer yarn
-yarn dev
-
-```
-
-Backend (Node.js / Express)
-After installing the backend dependencies, you can start the backend server:
-
-
-```bash
-# Navigate to the backend directory if you haven't already
-cd backend
-
-# Run the Node.js server
-node app.js
+4. **To start the production server** after building the project:
+    ```bash
+    npm start
+    ```
 
 
-```
 
+#### Pushing Code Changes
+
+To push your code changes to the remote repository, follow these steps:
+
+1. **Add the changes**:
+    ```bash
+    git add .
+    ```
+
+2. **Commit the changes with a message**:
+    ```bash
+    git commit -m "message here"
+    ```
+
+3. **Push the changes to the remote repository**:
+    ```bash
+    git push
+    ```
+
+---
 
 ## License
 
