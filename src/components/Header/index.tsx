@@ -57,14 +57,14 @@ const Header = () => {
                 } `}
               >
                 <Image
-                  src="https://i.imgur.com/pime7Ah.png"
+                  src="https://i.imgur.com/0CiG9sS.png"
                   alt="logo"
                   width={140}
                   height={30}
                   className="w-full dark:hidden"
                 />
                 <Image
-                  src="https://i.imgur.com/pime7Ah.png"
+                  src="https://i.imgur.com/0CiG9sS.png"
                   alt="logo"
                   width={140}
                   height={30}
