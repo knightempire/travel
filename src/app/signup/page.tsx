@@ -72,7 +72,7 @@ const SignupPage = () => {
                       Phone Number
                     </label>
                     <div className="flex mt-2">
-                      <span className="inline-flex items-center px-3 rounded-l-sm border border-r-0 border-gray-300 bg-gray-100 text-gray-600 dark:bg-gray-800 dark:text-gray-300">
+                      <span className="inline-flex items-center px-4 rounded-l-sm bg-gray-100 text-gray-600 dark:bg-gray-800 dark:text-gray-300">
                         <Flag code="IN" className="w-5 h-5 mr-2" /> +91
                       </span>
                       <input
@@ -81,7 +81,7 @@ const SignupPage = () => {
                         value={phone}
                         onChange={handlePhoneChange}
                         maxLength={10}
-                        className={`block w-full rounded-r-sm border px-3 py-2 text-gray-900 placeholder-gray-400 focus:outline-none sm:text-sm dark:bg-gray-800 dark:text-white 
+                        className={`block w-full rounded-r-sm px-4 py-3 text-gray-900 placeholder-gray-400 focus:outline-none sm:text-sm dark:bg-gray-800 dark:text-white 
                           ${errors.phone 
                             ? 'border-red-500 focus:ring-red-500 focus:border-red-500' 
                             : 'border-gray-300 focus:ring-primary focus:border-primary dark:border-gray-700'
