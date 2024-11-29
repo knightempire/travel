@@ -86,6 +86,8 @@ npm install
 yarn install
 ```
 
+# Project Setup and Running Instructions
+
 ### 4. Running the Project
 
 #### Switching Branch and Pulling Latest Changes
@@ -115,19 +117,46 @@ Once the dependencies are installed, you can run the frontend development server
     ```bash
     npm run dev
     ```
-    
-3. **To test the production build**, you can run:
+
+3. **Alternatively, if you prefer yarn**:
+    ```bash
+    yarn dev
+    ```
+
+4. **To test the production build**, you can run:
     ```bash
     npm run build
     ```
     This will build the Next.js project for production.
 
-4. **To start the production server** after building the project:
+5. **To start the production server** after building the project:
     ```bash
     npm start
     ```
 
+#### Backend (Node.js / Express)
 
+If you need to work on the **backend** code, follow the steps below to switch to the `backend` branch and run the backend server:
+
+1. **Switch to the `backend` branch**:
+    ```bash
+    git checkout backend
+    ```
+
+2. **Pull the latest changes from the remote repository**:
+    ```bash
+    git pull
+    ```
+
+3. **Navigate to the backend directory** (if you're not already in it):
+    ```bash
+    cd backend
+    ```
+
+4. **Run the Node.js server**:
+    ```bash
+    node app.js
+    ```
 
 #### Pushing Code Changes
 
@@ -149,6 +178,8 @@ To push your code changes to the remote repository, follow these steps:
     ```
 
 ---
+
+
 
 ## License
 
