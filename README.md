@@ -29,24 +29,69 @@ This is the **frontend** module of the Travel Recommendation System project. Bui
 git clone https://github.com/knightempire/travel.git
 cd travel/frontend
 ```
+#### Switching Branch and Pulling Latest Changes
 
-### 2. Install Dependencies
+To ensure you're on the correct branch and get the latest changes, follow these steps:
 
-```bash
-npm install
-# or
-yarn install
-```
+1. **Switch to the `frontend` branch**:
+    ```bash
+    git checkout frontend
+    ```
 
-### 3. Run the Development Server
+2. **Pull the latest changes from the remote repository**:
+    ```bash
+    git pull
+    ```
 
-Start the frontend server using the following command:
+#### Frontend (Next.js)
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+Once the dependencies are installed, you can run the frontend development server using Next.js:
+
+1. **Navigate to the frontend directory** (if you're not already in it):
+    ```bash
+    cd frontend
+    ```
+
+2. **Run the Next.js development server**:
+    ```bash
+    npm run dev
+    ```
+
+3. **Alternatively, if you prefer yarn**:
+    ```bash
+    yarn dev
+    ```
+
+4. **To test the production build**, you can run:
+    ```bash
+    npm run build
+    ```
+    This will build the Next.js project for production.
+
+
+
+
+
+#### Pushing Code Changes
+
+To push your code changes to the remote repository, follow these steps:
+
+1. **Add the changes**:
+    ```bash
+    git add .
+    ```
+
+2. **Commit the changes with a message**:
+    ```bash
+    git commit -m "message here"
+    ```
+
+3. **Push the changes to the remote repository**:
+    ```bash
+    git push
+    ```
+
+---
 
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
