@@ -1,6 +1,20 @@
-# Travel Recommendation System - Backend
+# <img src="https://i.imgur.com/56G0Rat.png" alt="ExploreIQ Logo" width="380" />  <br> ExploreIQ  <br> - Travel Recommendation System & Trip Planning Platform
 
-This is the **backend** module of the Travel Recommendation System project. Built with **Node.js** and **Express**, it serves as the backbone for the application's API and integrates with Firebase for user management and data storage.
+Welcome to **ExploreIQ**! This platform helps users plan their trips by recommending destinations, activities, and experiences based on personalized preferences. The system leverages machine learning (ML) models for recommendations and integrates a seamless itinerary planning experience.
+
+---
+
+
+
+### Logo:
+1. **Logo with Text**  
+   ![ExploreIQ Logo with Text](https://i.imgur.com/56G0Rat.png)  
+   URL: [ExploreIQ Logo with Text](https://i.imgur.com/56G0Rat.png)
+
+2. **Logo without Text**  
+   ![ExploreIQ Logo without Text](https://i.imgur.com/0CiG9sS.png)  
+   URL: [ExploreIQ Logo without Text](https://i.imgur.com/0CiG9sS.png)
+
 
 ## Features
 
