@@ -1,6 +1,6 @@
-# <img src="https://i.imgur.com/56G0Rat.png" alt="ExploreIQ Logo" width="380" />  <br> ExploreIQ  <br> - Travel Recommendation System & Trip Planning Platform
+# <img src="https://i.imgur.com/56G0Rat.png" alt="ExploreIQ Logo" width="380" />  <br> ExploreIQ  <br> - Travel Recommendation System & Trip Planning Platform (ML)
 
-Welcome to **ExploreIQ**! This platform helps users plan their trips by recommending destinations, activities, and experiences based on personalized preferences. The system leverages machine learning (ML) models for recommendations and integrates a seamless itinerary planning experience.
+Welcome to **ExploreIQ**! This is the **machine learning (ML)** module of the Travel Recommendation System project. It focuses on developing and deploying models to provide AI-powered travel recommendations, predict trends, and enhance user experiences.
 
 ---
 
