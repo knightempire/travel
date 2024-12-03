@@ -1,6 +1,19 @@
-# Travel Recommendation System - Frontend
+# <img src="https://i.imgur.com/56G0Rat.png" alt="ExploreIQ Logo" width="380" />  <br> ExploreIQ  <br> - Travel Recommendation System & Trip Planning Platform (Frontend)
 
-This is the **frontend** module of the Travel Recommendation System project. Built with **Next.js**, it provides a user-friendly interface for planning trips, receiving personalized travel recommendations, and managing itineraries.
+Welcome to ExploreIQ! This is the **frontend** module of the Travel Recommendation System project. Built with **Next.js**, it provides a user-friendly interface for planning trips, receiving personalized travel recommendations, and managing itineraries.
+
+---
+
+
+
+### Logo:
+1. **Logo with Text**  
+   ![ExploreIQ Logo with Text](https://i.imgur.com/56G0Rat.png)  
+   URL: [ExploreIQ Logo with Text](https://i.imgur.com/56G0Rat.png)
+
+2. **Logo without Text**  
+   ![ExploreIQ Logo without Text](https://i.imgur.com/0CiG9sS.png)  
+   URL: [ExploreIQ Logo without Text](https://i.imgur.com/0CiG9sS.png)
 
 ## Features
 
