@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useState, useRef } from "react";
 
-const SigninPage = () => {
+const Otp = () => {
   const [otp, setOtp] = useState<string[]>(Array(6).fill(""));
   const [otpError, setOtpError] = useState<string>("");
   const inputRefs = useRef<HTMLInputElement[]>([]);
@@ -48,7 +48,7 @@ const SigninPage = () => {
 
   return (
     <>
-      <section className="relative z-10 overflow-hidden pb-16 pt-36 md:pb-20 lg:pb-28 lg:pt-[180px]">
+      <section className="relative z-10 overflow-hidden pb-16 pt-36 md:pb-20 lg:pb-28 lg:pt-[180px] h-[100vh]">
         <div className="container">
           <div className="-mx-4 flex flex-wrap">
             <div className="w-full px-4">
@@ -169,4 +169,4 @@ const SigninPage = () => {
   );
 };
 
-export default SigninPage;
+export default Otp;

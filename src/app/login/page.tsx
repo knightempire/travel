@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import Link from "next/link";
 import Flag from "react-world-flags"; // Import the Flag component
 
-const SignupPage = () => {
+const Login = () => {
   const [phone, setPhone] = useState<string>("");
   const [errors, setErrors] = useState<{
     phone?: string;
@@ -52,7 +52,7 @@ const SignupPage = () => {
 
   return (
     <>
-      <section className="relative z-10 overflow-hidden pb-16 pt-36 md:pb-20 lg:pb-28 lg:pt-[180px]">
+      <section className="relative z-10 overflow-hidden pb-16 pt-36 md:pb-20 lg:pb-28 lg:pt-[180px] h-[100vh]">
         <div className="container">
           <div className="-mx-4 flex flex-wrap">
             <div className="w-full px-4">
@@ -102,17 +102,18 @@ const SignupPage = () => {
                       className="shadow-submit dark:shadow-submit-dark flex w-full items-center justify-center rounded-sm bg-primary px-9 py-4 text-base font-medium text-white duration-300 hover:bg-primary/90 disabled:opacity-50"
                       disabled={!phone || !!errors.phone}
                     >
-                      Sign up
+                      Continue
                     </button>
                   </div>
                 </form>
                 
-                <p className="text-center text-base font-medium text-body-color">
+                
+                {/* <p className="text-center text-base font-medium text-body-color">
                   Already using Startup?{" "}
                   <Link href="/signin" className="text-primary hover:underline">
                     Sign in
                   </Link>
-                </p>
+                </p> */}
               </div>
             </div>
           </div>
@@ -179,4 +180,4 @@ const SignupPage = () => {
   );
 };
 
-export default SignupPage;
+export default Login;
