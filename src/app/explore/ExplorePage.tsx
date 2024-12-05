@@ -1,20 +1,40 @@
 "use client";
-
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Input, Button, Form, DatePicker } from "antd";
-import 'antd/dist/reset.css';
+import dayjs from "dayjs";
 import Breadcrumb from "@/components/Common/Breadcrumb";
+import 'antd/dist/reset.css';
 
-const ExplorePage = () => {
+const TravelSearchPage: React.FC = () => {
   const [form] = Form.useForm();
   const [isPageLoaded, setIsPageLoaded] = useState(false);
+  const [fromDate, setFromDate] = useState<dayjs.Dayjs | null>(null);
 
   useEffect(() => {
-    setTimeout(() => setIsPageLoaded(true), 100); // Add a delay to trigger animation
+    setTimeout(() => setIsPageLoaded(true), 100);
   }, []);
 
   const onFinish = (values: any) => {
-    console.log("Form values:", values);
+    if (values.startdate && values.enddate) {
+      const fromDate = dayjs(values.startdate);
+      const toDate = dayjs(values.enddate);
+      
+      // Calculate the difference in days
+      const daysDifference = toDate.diff(fromDate, 'day');
+      
+      console.log("Form values:", values);
+      console.log(`Total trip duration: ${daysDifference + 1} days`);
+      console.log(`From: ${fromDate.format('YYYY-MM-DD')} to ${toDate.format('YYYY-MM-DD')}`);
+    }
+  };
+
+  const handleFromDateChange = (date: dayjs.Dayjs | null) => {
+    setFromDate(date);
+    form.setFieldsValue({ enddate: null });
+  };
+
+  const disabledToDate = (current: dayjs.Dayjs) => {
+    return (fromDate && current <= fromDate) || (!fromDate && current < dayjs().startOf('day'));
   };
 
   return (
@@ -23,13 +43,11 @@ const ExplorePage = () => {
         isPageLoaded ? "opacity-100" : "opacity-0"
       }`}
     >
-      {/* Breadcrumb */}
-      <Breadcrumb
-        pageName="Travel Search"
-        description="Enter your travel details"
+      <Breadcrumb 
+        pageName="Travel Search" 
+        description="Enter your travel details" 
       />
 
-      {/* Form Section */}
       <section className="pb-[120px] pt-[40px]">
         <div className="container mx-auto px-4">
           <Form
@@ -66,7 +84,7 @@ const ExplorePage = () => {
               <Input placeholder="To Place" className="w-full" />
             </Form.Item>
 
-            {/* Date Picker */}
+            {/* From Date Picker */}
             <Form.Item
               name="startdate"
               rules={[
@@ -81,10 +99,12 @@ const ExplorePage = () => {
                 className="w-full"
                 placeholder="Select From Date"
                 format="YYYY-MM-DD"
+                onChange={handleFromDateChange}
+                disabledDate={(current) => current < dayjs().startOf('day')}
               />
             </Form.Item>
 
-
+            {/* To Date Picker */}
             <Form.Item
               name="enddate"
               rules={[
@@ -99,6 +119,8 @@ const ExplorePage = () => {
                 className="w-full"
                 placeholder="Select To Date"
                 format="YYYY-MM-DD"
+                disabledDate={disabledToDate}
+                disabled={!fromDate}
               />
             </Form.Item>
 
@@ -111,6 +133,7 @@ const ExplorePage = () => {
                   backgroundColor: "rgb(74 108 247 / var(--tw-bg-opacity))",
                   borderColor: "rgb(74 108 247)",
                 }}
+                className="w-full sm:w-auto"
               >
                 Search
               </Button>
@@ -122,4 +145,4 @@ const ExplorePage = () => {
   );
 };
 
-export default ExplorePage;
+export default TravelSearchPage;
