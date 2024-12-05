@@ -1,6 +1,6 @@
 "use client";
 import React, { useState, useEffect } from "react";
-
+import Breadcrumb from "@/components/Common/Breadcrumb";
 const DayOneComponent: React.FC = () => {
   const [startTime, setStartTime] = useState<string>("");
   const [endTime, setEndTime] = useState<string>("");
@@ -16,8 +16,10 @@ const DayOneComponent: React.FC = () => {
 
   // Trigger opacity transition on page load
   useEffect(() => {
-    setIsPageLoaded(true);
+    setTimeout(() => setIsPageLoaded(true), 100);
   }, []);
+
+  
 
   return (
     <>
@@ -29,7 +31,10 @@ const DayOneComponent: React.FC = () => {
       >
         <div className="mx-auto px-4">
           {/* Header Section */}
-          <h1 className="mb-5 text-2xl font-bold text-white sm:text-3xl">Day 1</h1>
+          <Breadcrumb 
+        pageName="Day 1" 
+        description="" 
+      />
           {/* Form Section Below the Header */}
           <form className="flex flex-wrap justify-center items-center gap-6">
             {/* Start Time */}
