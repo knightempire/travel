@@ -1,7 +1,14 @@
 "use client";
 import React, { useState } from "react";
 import Link from "next/link";
+import { Metadata } from "next";
 import Flag from "react-world-flags"; // Import the Flag component
+
+export const metadata: Metadata = {
+  title: "ExporeIQ",
+  description: "Explore Beyond Boundaries",
+};
+
 
 const Login = () => {
   const [phone, setPhone] = useState<string>("");

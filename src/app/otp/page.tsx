@@ -2,6 +2,12 @@
 
 import Link from "next/link";
 import { useState, useRef } from "react";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "ExporeIQ",
+  description: "Explore Beyond Boundaries",
+};
 
 const Otp = () => {
   const [otp, setOtp] = useState<string[]>(Array(6).fill(""));

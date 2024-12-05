@@ -2,8 +2,8 @@ import { Metadata } from "next";
 import ExplorePage from "./ExplorePage";
 
 export const metadata: Metadata = {
-  title: "Blog Page | Free Next.js Template for Startup and SaaS",
-  description: "This is Blog Page for Startup Nextjs Template",
+  title: "ExporeIQ",
+  description: "Explore Beyond Boundaries",
 };
 
 export default function Page() {
