@@ -48,7 +48,7 @@ const TravelSearchPage: React.FC = () => {
         description="Enter your travel details" 
       />
 
-      <section className="pb-[120px] pt-[40px]">
+      <section className="pt-[40px]">
         <div className="container mx-auto px-4">
           <Form
             form={form}

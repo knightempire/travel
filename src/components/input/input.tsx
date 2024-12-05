@@ -25,7 +25,7 @@ const DayOneComponent: React.FC = () => {
     <>
       {/* Breadcrumb Section (Including Day 1 Header and Form) */}
       <section
-        className={`pb-[120px] pt-[40px] transition-opacity duration-1000 ${
+        className={`pb-[120px] pt-[10px] transition-opacity duration-1000 ${
           isPageLoaded ? "opacity-100" : "opacity-0"
         }`}
       >
