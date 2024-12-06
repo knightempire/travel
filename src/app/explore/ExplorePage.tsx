@@ -1,27 +1,82 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import { Input, Button, Form, DatePicker } from "antd";
+import { Button, Form, DatePicker, AutoComplete, message } from "antd";
 import dayjs from "dayjs";
 import Breadcrumb from "@/components/Common/Breadcrumb";
 import 'antd/dist/reset.css';
 import InputComponent from "@/components/input/input";
+interface City {
+  name: string;
+  // Add other properties as needed
+}
+
+// Constants for location
+const COUNTRY = {
+  name: 'India',
+  code: 'IN'
+};
+
+const STATE = {
+  name: 'Tamil Nadu',
+  code: 'TN'
+};
 
 const ExplorePage: React.FC = () => {
   const [form] = Form.useForm();
   const [isPageLoaded, setIsPageLoaded] = useState(false);
   const [fromDate, setFromDate] = useState<dayjs.Dayjs | null>(null);
-  const [tripDays, setTripDays] = useState<number>(0); // State to store trip duration
+  const [tripDays, setTripDays] = useState<number>(0);
+  
+  // State for district suggestions
+  const [fromPlaceOptions, setFromPlaceOptions] = useState<{ value: string }[]>([]);
+  const [toPlaceOptions, setToPlaceOptions] = useState<{ value: string }[]>([]);
+  const [allDistricts, setAllDistricts] = useState<string[]>([]);
+
+  // API configuration
+  const API_KEY = 'YzZJOGF3STBZM3VtNmxHUDBUcmI3Wm90RVZoUWRoVlBRekd6WERzZA==';
+  const API_BASE_URL = 'https://api.countrystatecity.in/v1';
 
   useEffect(() => {
+    // Fetch Tamil Nadu districts on component mount
+    fetchTamilNaduDistricts();
     setTimeout(() => setIsPageLoaded(true), 100);
   }, []);
+
+  const fetchTamilNaduDistricts = async () => {
+    try {
+      const response = await fetch(`${API_BASE_URL}/countries/${COUNTRY.code}/states/${STATE.code}/cities`, {
+        headers: {
+          "X-CSCAPI-KEY": API_KEY
+        }
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to fetch districts');
+      }
+
+      const data: City[] = await response.json();
+      
+      // Ensure all items are strings and create unique districts
+      const districts = Array.from(
+        new Set(
+          data
+            .map((city) => city.name)
+            .filter((name): name is string => typeof name === 'string')
+        )
+      );
+
+      setAllDistricts(districts);
+    } catch (error) {
+      console.error('Error fetching districts:', error);
+      message.error('Failed to load districts. Please try again.');
+    }
+  };
 
   const onFinish = (values: any) => {
     if (values.startdate && values.enddate) {
       const fromDate = dayjs(values.startdate);
       const toDate = dayjs(values.enddate);
 
-      // Calculate the difference in days
       const daysDifference = toDate.diff(fromDate, "day");
 
       console.log("Form values:", values);
@@ -30,7 +85,38 @@ const ExplorePage: React.FC = () => {
         `From: ${fromDate.format("YYYY-MM-DD")} to ${toDate.format("YYYY-MM-DD")}`
       );
 
-      setTripDays(daysDifference + 1); // Update trip duration state
+      setTripDays(daysDifference + 1);
+    }
+  };
+
+  // Handle district suggestions
+  const handleFromPlaceSearch = (value: string) => {
+    if (value.length > 0) {
+      // Filter districts based on input
+      const suggestions = allDistricts
+        .filter(district => 
+          district.toLowerCase().includes(value.toLowerCase())
+        )
+        .map(district => ({ value: district }));
+      
+      setFromPlaceOptions(suggestions);
+    } else {
+      setFromPlaceOptions([]);
+    }
+  };
+
+  const handleToPlaceSearch = (value: string) => {
+    if (value.length > 0) {
+      // Filter districts based on input
+      const suggestions = allDistricts
+        .filter(district => 
+          district.toLowerCase().includes(value.toLowerCase())
+        )
+        .map(district => ({ value: district }));
+      
+      setToPlaceOptions(suggestions);
+    } else {
+      setToPlaceOptions([]);
     }
   };
 
@@ -55,7 +141,7 @@ const ExplorePage: React.FC = () => {
       >
         <Breadcrumb
           pageName="Travel Search"
-          description="Enter your travel details"
+          description={`Enter your travel details in ${STATE.name}, ${COUNTRY.name}`}
         />
 
         <section className="pt-[40px]">
@@ -72,12 +158,17 @@ const ExplorePage: React.FC = () => {
                 rules={[
                   {
                     required: true,
-                    message: "Please input your starting place!",
+                    message: "Please input your starting place in Tamil Nadu!",
                   },
                 ]}
                 className="w-full sm:w-1/4"
               >
-                <Input placeholder="From Place" className="w-full" />
+                <AutoComplete
+                  options={fromPlaceOptions}
+                  onSearch={handleFromPlaceSearch}
+                  placeholder="From Place"
+                  className="w-full"
+                />
               </Form.Item>
 
               {/* To Place */}
@@ -86,12 +177,17 @@ const ExplorePage: React.FC = () => {
                 rules={[
                   {
                     required: true,
-                    message: "Please input your destination!",
+                    message: "Please input your destination in Tamil Nadu!",
                   },
                 ]}
                 className="w-full sm:w-1/4"
               >
-                <Input placeholder="To Place" className="w-full" />
+                <AutoComplete
+                  options={toPlaceOptions}
+                  onSearch={handleToPlaceSearch}
+                  placeholder="To place"
+                  className="w-full"
+                />
               </Form.Item>
 
               {/* From Date Picker */}
@@ -156,7 +252,6 @@ const ExplorePage: React.FC = () => {
       </div>
       {/* Pass the trip duration to InputComponent */}
       <InputComponent tripDays={tripDays} />
-
     </>
   );
 };
