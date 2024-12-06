@@ -1,17 +1,29 @@
-require('dotenv').config();
+// app.js
+const express = require('express');
+const { db, rtdb } = require('./db/db'); // Import Firebase instances
 
-const admin = require("firebase-admin");
+const app = express();
+const port = 3005;
 
-admin.initializeApp({
-  credential: admin.credential.cert(
-    require("./travel-70aa4-firebase-adminsdk-tuj3z-c18402faaa.json")
-  ),
+// Simple route to check server status
+app.get('/', (req, res) => {
+    res.send('Server is running and connected to Firebase!');
 });
 
-// Example: Firestore database instance
-const db = admin.firestore();
 
-// Example: Firebase Authentication instance
-const auth = admin.auth();
 
-console.log("Firebase is connected");
+// Example route to check Firebase Realtime Database connection
+app.get('/check-db', (req, res) => {
+    rtdb.ref('.info/connected').once('value', (snapshot) => {
+        if (snapshot.val() === true) {
+            res.send('Connected to Firebase Realtime Database.');
+        } else {
+            res.send('Failed to connect to Firebase Realtime Database.');
+        }
+    });
+});
+
+// Start the server
+app.listen(port, () => {
+    console.log(`Server is running on http://localhost:${port}`);
+});
