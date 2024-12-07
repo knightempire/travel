@@ -94,7 +94,7 @@ const ProfileForm = () => {
             htmlFor="name"
             className="block text-sm font-medium text-gray-700 dark:text-gray-300"
           >
-            Full Name
+            {/* Full Name */}
           </label>
           <input
             type="text"
@@ -120,7 +120,7 @@ const ProfileForm = () => {
             htmlFor="age"
             className="block text-sm font-medium text-gray-700 dark:text-gray-300"
           >
-            Age
+            {/* Age */}
           </label>
           <input
             type="text"
