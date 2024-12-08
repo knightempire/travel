@@ -1,16 +1,15 @@
-
 "use client";
 import React, { useState } from "react";
 import Link from "next/link";
-import Flag from "react-world-flags"; // Import the Flag component
+import Flag from "react-world-flags";
 
+interface LoginFormProps {
+  onLogin: (phoneNumber: string) => void;
+}
 
-
-const Login = () => {
-  const [phone, setPhone] = useState<string>("");
-  const [errors, setErrors] = useState<{
-    phone?: string;
-  }>({});
+const LoginForm: React.FC<LoginFormProps> = ({ onLogin }) => {
+  const [phoneNumber, setPhoneNumber] = useState<string>("");
+  const [errors, setErrors] = useState<{ phone?: string }>({});
 
   const validatePhone = (value: string): boolean => {
     const phoneRegex = /^[6-9]\d{9}$/;
@@ -19,7 +18,7 @@ const Login = () => {
 
   const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value.replace(/\D/g, "");
-    setPhone(value);
+    setPhoneNumber(value);
 
     if (value && !validatePhone(value)) {
       setErrors(prev => ({
@@ -39,9 +38,9 @@ const Login = () => {
 
     const validationErrors: { phone?: string } = {};
 
-    if (!phone) {
+    if (!phoneNumber) {
       validationErrors.phone = "Phone number is required";
-    } else if (!validatePhone(phone)) {
+    } else if (!validatePhone(phoneNumber)) {
       validationErrors.phone = "Invalid phone number format";
     }
 
@@ -50,7 +49,9 @@ const Login = () => {
       return;
     }
 
-    console.log("Submitting phone:", phone);
+    console.log("Submitting phone:", phoneNumber);
+
+    onLogin(phoneNumber); // Pass the phone number to parent component
   };
 
   return (
@@ -61,11 +62,11 @@ const Login = () => {
             <div className="w-full px-4">
               <div className="shadow-three mx-auto max-w-[500px] rounded bg-white px-6 py-10 dark:bg-dark sm:p-[60px]">
                 <h3 className="mb-3 text-center text-2xl font-bold text-black dark:text-white sm:text-3xl">
-                Create your account
+                  Create your account
                 </h3>
                 <p className="mb-11 text-center text-base font-medium text-body-color">
-                Get AI-driven travel recommendations and schedule your next adventure                </p>
-                
+                  Get AI-driven travel recommendations and schedule your next adventure                </p>
+
                 <form onSubmit={handleSubmit} noValidate>
                   <div className="mb-6">
                     <label
@@ -81,12 +82,12 @@ const Login = () => {
                       <input
                         type="tel"
                         id="phone"
-                        value={phone}
+                        value={phoneNumber}
                         onChange={handlePhoneChange}
                         maxLength={10}
                         className={`block w-full rounded-r-sm px-4 py-3 text-gray-900 placeholder-gray-400 focus:outline-none sm:text-sm dark:bg-gray-800 dark:text-white 
-                          ${errors.phone 
-                            ? 'border-red-500 focus:ring-red-500 focus:border-red-500' 
+                          ${errors.phone
+                            ? 'border-red-500 focus:ring-red-500 focus:border-red-500'
                             : 'border-gray-300 focus:ring-primary focus:border-primary dark:border-gray-700'
                           }`}
                         placeholder="Enter your 10-digit phone number"
@@ -98,19 +99,19 @@ const Login = () => {
                       </p>
                     )}
                   </div>
-                  
+
                   <div className="mb-6">
-                    <button 
-                      type="submit" 
+                    <button
+                      type="submit"
                       className="shadow-submit dark:shadow-submit-dark flex w-full items-center justify-center rounded-sm bg-primary px-9 py-4 text-base font-medium text-white duration-300 hover:bg-primary/90 disabled:opacity-50"
-                      disabled={!phone || !!errors.phone}
+                      disabled={!phoneNumber || !!errors.phone}
                     >
                       Continue
                     </button>
                   </div>
                 </form>
-                
-                
+
+
                 {/* <p className="text-center text-base font-medium text-body-color">
                   Already using Startup?{" "}
                   <Link href="/signin" className="text-primary hover:underline">
@@ -183,4 +184,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default LoginForm;
