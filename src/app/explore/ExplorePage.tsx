@@ -135,7 +135,7 @@ const ExplorePage: React.FC = () => {
   return (
     <>
       <div
-        className={`transition-opacity duration-1000 ${
+        className={`transition-opacity duration-100 ${
           isPageLoaded ? "opacity-100" : "opacity-0"
         }`}
       >

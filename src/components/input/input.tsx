@@ -275,7 +275,7 @@ const DayOneComponent: React.FC<InputComponentProps> = ({ tripDays }) => {
                           onClick={() => handleAddSlot(dayIndex)}
                           className="px-4 py-2 bg-gray-400 text-white font-bold rounded-md shadow-lg hover:bg-gray-500 transition"
                         >
-                          +
+                          + add slot
                         </button>
                       )}
                       <button
