@@ -247,16 +247,14 @@ const Hero = () => {
             <div className="w-full px-4 lg:w-1/2">
               <div className="mx-auto max-w-[700px] text-center lg:text-left">
                 {/* Title Animation */}
-<motion.h1
-  className="mb-7 text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-[#64b6f7] via-[#d8a6d3] to-[#f9d371] sm:text-5xl sm:leading-tight md:text-6xl md:leading-tight tracking-wide drop-shadow-2xl shining-text"
+                <motion.h1
+  className="mb-7 text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-[#a29bfe] via-[#fab1a0] to-[#f8c291] sm:text-5xl sm:leading-tight md:text-6xl md:leading-tight tracking-wide drop-shadow-2xl shining-text"
   initial={{ opacity: 0, y: -30 }}
   animate={{ opacity: 1, y: 0 }}
   transition={{ duration: 1, delay: 0.5 }}
 >
   ExploreIQ
 </motion.h1>
-
-
 
 
 
