@@ -3,7 +3,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import ThemeToggler from "./ThemeToggler";
 import menuData from "./menuData";
 
 const Header = () => {
@@ -165,12 +164,30 @@ const Header = () => {
                 >
                   Sign In
                 </Link> */}
-                <Link
-                  href="/login"
-                  className="ease-in-up shadow-btn hover:shadow-btn-hover hidden rounded-sm bg-primary px-8 py-3 text-base font-medium text-white transition duration-300 hover:bg-opacity-90 md:block md:px-9 lg:px-6 xl:px-9"
-                >
-                  Login
-                </Link>
+                
+<Link
+  href="/login"
+  className="group flex items-center gap-2 px-4 py-2 bg-indigo-600 text-white font-bold transition-colors duration-200 hover:bg-gray-900"
+>
+  
+  Sign up
+  <div className="flex justify-center items-center opacity-0 group-hover:opacity-100 group-hover:translate-x-2 transition-all duration-300">
+    <svg
+      className="w-3 h-3 text-white transition-all duration-300"
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 10 10"
+    >
+      <path
+        d="M2 5h6M5 2l3 3-3 3"
+        stroke="currentColor"
+        strokeWidth="2"
+        fill="none"
+      />
+    </svg>
+  </div>
+</Link>
+
+
                 <div>
                   {/* <ThemeToggler /> */}
                 </div>

@@ -140,7 +140,7 @@ const ExplorePage: React.FC = () => {
       >
         <Breadcrumb
           pageName="Travel Search"
-          description={`Enter your travel details in ${STATE.name}, ${COUNTRY.name}`}
+          description={`travels}`}
         />
 
         <section className="pt-[40px]">

@@ -1,4 +1,6 @@
+"use client";
 import Link from "next/link";
+import { motion } from "framer-motion";
 
 const Hero = () => {
   return (
@@ -11,48 +13,107 @@ const Hero = () => {
           <div className="-mx-4 flex flex-wrap">
             {/* Left side - Image */}
             <div className="w-full px-4 lg:w-1/2">
-              <div className="mx-auto max-w-[600px]">
-                <img
-                  src="https://i.imgur.com/56G0Rat.png"
-                  alt="Hero Image"
-                  className="w-full h-auto"
-                />
+              <div className="mx-auto max-w-[650px]">
+              <motion.div
+  initial={{ opacity: 0, x: -100, scale: 0.95 }}  // Slide from the left and slightly scaled down
+  animate={{ opacity: 1, x: 0, scale: 1 }}       // Fade in and slide to position with scale back to normal
+  transition={{
+    duration: 1.5,  // Duration of animation
+    ease: "easeOut",  // Easing for smoothness
+    delay: 2.4,       // Delay before starting the animation
+  }}
+>
+  <img
+    src="https://i.imgur.com/56G0Rat.png"
+    alt="ExploreIQ Hero Image"
+    className="w-full h-auto"
+  />
+</motion.div>
+
               </div>
             </div>
 
             {/* Right side - Text Content */}
             <div className="w-full px-4 lg:w-1/2">
-              <div className="mx-auto max-w-[800px] text-center lg:text-left">
-                <h1 className="mb-5 text-3xl font-bold leading-tight text-black dark:text-white sm:text-4xl sm:leading-tight md:text-5xl md:leading-tight">
+              <div className="mx-auto max-w-[700px] text-center lg:text-left">
+                {/* Title Animation */}
+                <motion.h1
+                  className="mb-7 text-3xl font-bold leading-tight text-black dark:text-white sm:text-4xl sm:leading-tight md:text-5xl md:leading-tight"
+                  initial={{ opacity: 0, y: -30 }} // Slide up from below
+                  animate={{ opacity: 1, y: 0 }}    // Fade-in and slide up
+                  transition={{ duration: 1, delay: 0.5 }} // Delay to sync with image animation
+                >
                   ExploreIQ
-                </h1>
-                <p className="mb-12 text-base !leading-relaxed text-body-color dark:text-body-color-dark sm:text-lg md:text-xl">
-                  Startup is a free Next.js template for startups and SaaS
-                  business websites. It comes with all the essential pages,
-                  components, and sections you need to launch a complete
-                  business website, built with Next 13.x and Tailwind CSS.
-                </p>
+                </motion.h1>
+
+                {/* Description Text Animation */}
+                <motion.p
+                  className="mb-12 text-base !leading-relaxed text-body-color dark:text-body-color-dark sm:text-lg md:text-xl"
+                  initial={{ opacity: 0, y: 30 }} // Slide up from below
+                  animate={{ opacity: 1, y: 0 }}    // Fade-in and slide up
+                  transition={{ duration: 1, delay: 1 }} // Delay to sync with title animation
+                >
+                  Discover your next adventure with ExploreIQ! Our platform
+                  leverages AI to offer personalized travel recommendations,
+                  manage your trip itineraries, and help you book experiences
+                  tailored to your preferences.
+                </motion.p>
+
+                {/* Buttons Animation */}
                 <div className="flex flex-col items-center justify-center space-y-4 sm:flex-row sm:space-x-4 sm:space-y-0">
-                  <Link
-                    href="https://nextjstemplates.com/templates/saas-starter-startup"
-                    className="rounded-sm bg-primary px-8 py-4 text-base font-semibold text-white duration-300 ease-in-out hover:bg-primary/80"
+                  <motion.div
+                    initial={{ opacity: 0, y: 30 }} // Slide up from below
+                    animate={{ opacity: 1, y: 0 }}    // Fade-in and slide up
+                    transition={{ duration: 1, delay: 1.5 }} // Delay to sync with previous animations
                   >
-                    🔥 Get Pro
-                  </Link>
-                  <Link
-                    href="https://github.com/NextJSTemplates/startup-nextjs"
-                    className="inline-block rounded-sm bg-black px-8 py-4 text-base font-semibold text-white duration-300 ease-in-out hover:bg-black/90 dark:bg-white/10 dark:text-white dark:hover:bg-white/5"
+<button className="group flex items-center justify-start gap-2 w-auto h-10 bg-[#4766e8] text-white font-semibold rounded-full border-none shadow-lg px-4 py-1 hover:bg-[#5c7bf7] active:scale-95">
+   <svg className="h-6 transition-transform duration-500 group-hover:rotate-[360deg]" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+      <path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zm50.7-186.9L162.4 380.6c-19.4 7.5-38.5-11.6-31-31l55.5-144.3c3.3-8.5 9.9-15.1 18.4-18.4l144.3-55.5c19.4-7.5 38.5 11.6 31 31L325.1 306.7c-3.2 8.5-9.9 15.1-18.4 18.4zM288 256a32 32 0 1 0 -64 0 32 32 0 1 0 64 0z"></path>
+   </svg>
+   Begin Your Journey
+</button>
+
+
+
+                  </motion.div>
+                  <motion.div
+                    initial={{ opacity: 0, y: 30 }} // Slide up from below
+                    animate={{ opacity: 1, y: 0 }}    // Fade-in and slide up
+                    transition={{ duration: 1, delay: 2 }} // Delay to sync with previous animations
                   >
-                    Star on GitHub
-                  </Link>
+    
+    <button className="inline-flex items-center gap-3 px-6 py-3 rounded-full font-semibold text-white bg-[#353944] overflow-hidden whitespace-nowrap hover:bg-black group">
+  <span className="relative flex-shrink-0 w-6 h-6 bg-white rounded-full grid place-items-center text-[#292e39] group-hover:text-black">
+    
+    {/* First arrow */}
+    <svg viewBox="0 0 14 15" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-2.5 h-2.5 transition-transform duration-300 ease-in-out group-hover:translate-x-[150%] group-hover:translate-y-[-150%]">
+      <path d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z" fill="currentColor"></path>
+    </svg>
+
+    {/* Second arrow */}
+    <svg viewBox="0 0 14 15" fill="none" xmlns="http://www.w3.org/2000/svg" className="absolute w-2.5 h-2.5 transition-all duration-300 ease-in-out opacity-0 group-hover:opacity-100 group-hover:translate-x-0 group-hover:translate-y-0 translate-x-[-150%] translate-y-[150%]">
+      <path d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z" fill="currentColor"></path>
+    </svg>
+
+  </span>
+  Discover 
+</button>
+
+
+                  </motion.div>
                 </div>
               </div>
             </div>
           </div>
         </div>
 
-        {/* Decorative SVGs */}
-        <div className="absolute right-0 top-0 z-[-1] opacity-30 lg:opacity-100">
+        {/* Decorative SVGs with Animations */}
+        <motion.div
+          className="absolute right-0 top-0 z-[-1] opacity-30 lg:opacity-100"
+          initial={{ opacity: 0, x: 50 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 1, delay: 1.5 }}
+        >
           <svg
             width="450"
             height="556"
@@ -189,8 +250,14 @@ const Hero = () => {
               </linearGradient>
             </defs>
           </svg>
-        </div>
-        <div className="absolute bottom-0 left-0 z-[-1] opacity-30 lg:opacity-100">
+        </motion.div>
+
+        <motion.div
+          className="absolute bottom-0 left-0 z-[-1] opacity-30 lg:opacity-100"
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, delay: 2 }}
+        >
           <svg
             width="364"
             height="201"
@@ -292,7 +359,7 @@ const Hero = () => {
               </radialGradient>
             </defs>
           </svg>
-        </div>
+        </motion.div>
       </section>
     </>
   );

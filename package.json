@@ -16,7 +16,7 @@
     "eslint": "^8.56.0",
     "eslint-config-next": "^14.1.0",
     "firebase": "^11.0.2",
-    "framer-motion": "^11.13.1",
+    "framer-motion": "^11.13.3",
     "gsap": "^3.12.5",
     "i": "^0.3.7",
     "lucide-react": "^0.465.0",
