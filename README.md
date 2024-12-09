@@ -11,7 +11,7 @@ Welcome to ExploreIQ! This is the **frontend** module of the Travel Recommendati
    ![ExploreIQ Logo with Text](https://i.imgur.com/56G0Rat.png)  
    URL: [ExploreIQ Logo with Text](https://i.imgur.com/56G0Rat.png)
 
-2. **Logo without Text**  
+2. **Logo without Text**   
    ![ExploreIQ Logo without Text](https://i.imgur.com/0CiG9sS.png)  
    URL: [ExploreIQ Logo without Text](https://i.imgur.com/0CiG9sS.png)
 
