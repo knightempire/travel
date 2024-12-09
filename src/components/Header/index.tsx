@@ -170,7 +170,7 @@ const Header = () => {
   className="group flex items-center gap-2 px-4 py-2 bg-indigo-600 text-white font-bold transition-colors duration-200 hover:bg-gray-900"
 >
   
-  Sign up
+  Login
   <div className="flex justify-center items-center opacity-0 group-hover:opacity-100 group-hover:translate-x-2 transition-all duration-300">
     <svg
       className="w-3 h-3 text-white transition-all duration-300"

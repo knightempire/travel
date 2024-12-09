@@ -13,14 +13,14 @@ const Hero = () => {
           <div className="-mx-4 flex flex-wrap">
             {/* Left side - Image */}
             <div className="w-full px-4 lg:w-1/2">
-              <div className="mx-auto max-w-[650px]">
+              {/* <div className="mx-auto max-w-[650px]">
               <motion.div
   initial={{ opacity: 0, x: -100, scale: 0.95 }}  // Slide from the left and slightly scaled down
   animate={{ opacity: 1, x: 0, scale: 1 }}       // Fade in and slide to position with scale back to normal
   transition={{
     duration: 1.5,  // Duration of animation
     ease: "easeOut",  // Easing for smoothness
-    delay: 2.4,       // Delay before starting the animation
+    delay: 2,       // Delay before starting the animation
   }}
 >
   <img
@@ -30,7 +30,217 @@ const Hero = () => {
   />
 </motion.div>
 
-              </div>
+              </div> */}
+
+
+<div className="flex justify-center items-center">
+  <motion.div
+    initial={{ opacity: 0, x: -100, scale: 0.95 }}
+    animate={{ opacity: 1, x: 0, scale: 1 }}
+    transition={{
+      duration: 1.5,
+      ease: 'easeOut',
+      delay: 1,
+    }}
+    className="relative w-[400px] h-[400px]"
+  >
+    <motion.svg
+      viewBox="0 0 400 400"
+      className="w-full h-full"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 1.5, delay: 1 }}
+    >
+      {/* Connecting Lines */}
+      <motion.path
+        className="line"
+        d="M50,150 L150,50 L250,150"
+        style={{ strokeWidth: '15px', stroke: '#fe6275' , fill: 'none' }}
+        initial={{ pathLength: 0, opacity: 0 }}
+        animate={{ pathLength: 1, opacity: 1 }}
+        transition={{ duration: 1.5, delay: 4.5, ease: 'easeOut' }}
+      />
+      <motion.path
+        className="line"
+        d="M250,50 L350,150 L250,250"
+        style={{ strokeWidth: '15px', stroke: '#fec47c', fill: 'none' }}
+        initial={{ pathLength: 0, opacity: 0 }}
+        animate={{ pathLength: 1, opacity: 1 }}
+        transition={{ duration: 1.5, delay: 5, ease: 'easeOut' }}
+      />
+      <motion.path
+        className="line"
+        d="M150,250 L250,350 L350,250"
+        style={{ strokeWidth: '15px', stroke: '#5bce68', fill: 'none' }}
+        initial={{ pathLength: 0, opacity: 0 }}
+        animate={{ pathLength: 1, opacity: 1 }}
+        transition={{ duration: 1.5, delay: 5.5, ease: 'easeOut' }}
+      />
+      <motion.path
+        className="line"
+        d="M150,350 L50,250 L150,150"
+        style={{ strokeWidth: '15px', stroke: '#0486bb' , fill: 'none'}}
+        initial={{ pathLength: 0, opacity: 0 }}
+        animate={{ pathLength: 1, opacity: 1 }}
+        transition={{ duration: 1.5, delay: 6, ease: 'easeOut' }}
+      />
+
+      {/* Circles */}
+      {/* Red Circles */}
+      <motion.circle
+        cx="50"
+        cy="50"
+        r="20"
+        fill="#fe6275"
+        initial={{ opacity: 0, scale: 0 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 1, delay: 0, ease: 'easeOut' }}
+      />
+      <motion.circle
+        cx="150"
+        cy="50"
+        r="20"
+        fill="#fe6275"
+        initial={{ opacity: 0, scale: 0 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 1, delay: 0.3, ease: 'easeOut' }}
+      />
+      <motion.circle
+        cx="50"
+        cy="150"
+        r="20"
+        fill="#fe6275"
+        initial={{ opacity: 0, scale: 0 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 1, delay: 0.6, ease: 'easeOut' }}
+      />
+      <motion.circle
+        cx="250"
+        cy="150"
+        r="20"
+        fill="#fe6275"
+        initial={{ opacity: 0, scale: 0 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 1, delay: 0.9, ease: 'easeOut' }}
+      />
+
+      {/* Blue Circles */}
+      <motion.circle
+        cx="50"
+        cy="350"
+        r="20"
+        fill="#0486bb"
+        initial={{ opacity: 0, scale: 0 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 1, delay: 1, ease: 'easeOut' }}
+      />
+      <motion.circle
+        cx="50"
+        cy="250"
+        r="20"
+        fill="#0486bb"
+        initial={{ opacity: 0, scale: 0 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 1, delay: 1.3, ease: 'easeOut' }}
+      />
+      <motion.circle
+        cx="150"
+        cy="150"
+        r="20"
+        fill="#0486bb"
+        initial={{ opacity: 0, scale: 0 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 1, delay: 1.6, ease: 'easeOut' }}
+      />
+      <motion.circle
+        cx="150"
+        cy="350"
+        r="20"
+        fill="#0486bb"
+        initial={{ opacity: 0, scale: 0 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 1, delay: 1.9, ease: 'easeOut' }}
+      />
+
+      {/* Green Circles */}
+      <motion.circle
+        cx="350"
+        cy="350"
+        r="20"
+        fill="#5bce68"
+        initial={{ opacity: 0, scale: 0 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 1, delay: 2, ease: 'easeOut' }}
+      />
+      <motion.circle
+        cx="250"
+        cy="350"
+        r="20"
+        fill="#5bce68"
+        initial={{ opacity: 0, scale: 0 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 1, delay: 2.3, ease: 'easeOut' }}
+      />
+      <motion.circle
+        cx="150"
+        cy="250"
+        r="20"
+        fill="#5bce68"
+        initial={{ opacity: 0, scale: 0 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 1, delay: 2.6, ease: 'easeOut' }}
+      />
+      <motion.circle
+        cx="350"
+        cy="250"
+        r="20"
+        fill="#5bce68"
+        initial={{ opacity: 0, scale: 0 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 1, delay: 2.9, ease: 'easeOut' }}
+      />
+
+      {/* Yellow Circles */}
+      <motion.circle
+        cx="250"
+        cy="50"
+        r="20"
+        fill="#fec47c"
+        initial={{ opacity: 0, scale: 0 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 1, delay: 3, ease: 'easeOut' }}
+      />
+      <motion.circle
+        cx="350"
+        cy="50"
+        r="20"
+        fill="#fec47c"
+        initial={{ opacity: 0, scale: 0 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 1, delay: 3.3, ease: 'easeOut' }}
+      />
+      <motion.circle
+        cx="350"
+        cy="150"
+        r="20"
+        fill="#fec47c"
+        initial={{ opacity: 0, scale: 0 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 1, delay: 3.6, ease: 'easeOut' }}
+      />
+      <motion.circle
+        cx="250"
+        cy="250"
+        r="20"
+        fill="#fec47c"
+        initial={{ opacity: 0, scale: 0 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 1, delay: 3.9, ease: 'easeOut' }}
+      />
+    </motion.svg>
+  </motion.div>
+</div>
+
             </div>
 
             {/* Right side - Text Content */}
