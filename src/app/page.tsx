@@ -11,12 +11,7 @@ import Testimonials from "@/components/Testimonials";
 import Video from "@/components/Video";
 import { Metadata } from "next";
 
-export const metadata: Metadata = {
-  title: "ExporeIQ",
-  description: "Explore Beyond Boundaries",
-  // other metadata
-};
-
+ 
 export default function Home() {
   return (
     <>

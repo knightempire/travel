@@ -1,13 +1,17 @@
 "use client";
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { useEffect, useState } from 'react';
+import { motion } from 'framer-motion';
+
 
 const Hero = () => {
+
+  
   return (
     <>
       <section
         id="home"
-        className="relative z-10 overflow-hidden bg-white pb-16 pt-[120px] dark:bg-gray-dark md:pb-[120px] md:pt-[150px] xl:pb-[160px] xl:pt-[180px] 2xl:pb-[200px] 2xl:pt-[210px]"
+        className="relative z-10 overflow-hidden bg-white pb-16 pt-[120px] dark:bg-gray-dark md:pb-[120px] md:pt-[150px] xl:pb-[160px] xl:pt-[180px] 2xl:pb-[200px] 2xl:pt-[210px] "
       >
         <div className="container">
           <div className="-mx-4 flex flex-wrap">
@@ -33,18 +37,17 @@ const Hero = () => {
               </div> */}
 
 
-<div className="flex justify-center items-center">
-  <motion.div
-    initial={{ opacity: 0, x: -100, scale: 0.95 }}
-    animate={{ opacity: 1, x: 0, scale: 1 }}
-    transition={{
-      duration: 1,
-      ease: 'easeOut',
-      delay: 0.5,
-    }}
-    className="relative w-[400px] h-[400px]"
-  >
-    <motion.svg
+<div
+        className={`flex justify-center items-center transition-transform duration-300 ease-in-out`}
+
+      >
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1 }}
+          className="relative w-[400px] h-[400px]"
+        >
+       <motion.svg
       viewBox="0 0 400 400"
       className="w-full h-full"
       initial={{ opacity: 0 }}
@@ -53,21 +56,23 @@ const Hero = () => {
     >
       {/* Connecting Lines */}
       <motion.path
-        className="line"
-        d="M50,150 L150,50 L250,150"
-        style={{ strokeWidth: '15px', stroke: '#fe6275' , fill: 'none' }}
-        initial={{ pathLength: 0, opacity: 0 }}
-        animate={{ pathLength: 1, opacity: 1 }}
-        transition={{ duration: 1.5, delay: 3.0, ease: 'easeOut' }}
-      />
-      <motion.path
-        className="line"
-        d="M250,50 L350,150 L250,250"
-        style={{ strokeWidth: '15px', stroke: '#fec47c', fill: 'none' }}
-        initial={{ pathLength: 0, opacity: 0 }}
-        animate={{ pathLength: 1, opacity: 1 }}
-        transition={{ duration: 1.5, delay: 3.3, ease: 'easeOut' }}
-      />
+  className="line"
+  d="M250,150 L150,50 L50,150"
+  style={{ strokeWidth: '15px', stroke: '#fe6275', fill: 'none' }}
+  initial={{ pathLength: 0, opacity: 0 }}
+  animate={{ pathLength: 1, opacity: 1 }}
+  transition={{ duration: 1.5, delay: 3.0, ease: 'easeOut' }}
+/>
+
+<motion.path
+  className="line"
+  d="M250,250 L350,150 L250,50"
+  style={{ strokeWidth: '15px', stroke: '#fec47c', fill: 'none' }}
+  initial={{ pathLength: 0, opacity: 0 }}
+  animate={{ pathLength: 1, opacity: 1 }}
+  transition={{ duration: 1.5, delay: 3.3, ease: 'easeOut' }}
+/>
+
       <motion.path
         className="line"
         d="M150,250 L250,350 L350,250"
@@ -76,14 +81,15 @@ const Hero = () => {
         animate={{ pathLength: 1, opacity: 1 }}
         transition={{ duration: 1.5, delay: 3.6, ease: 'easeOut' }}
       />
-      <motion.path
-        className="line"
-        d="M150,350 L50,250 L150,150"
-        style={{ strokeWidth: '15px', stroke: '#0486bb' , fill: 'none'}}
-        initial={{ pathLength: 0, opacity: 0 }}
-        animate={{ pathLength: 1, opacity: 1 }}
-        transition={{ duration: 1.5, delay: 3.9, ease: 'easeOut' }}
-      />
+<motion.path
+  className="line"
+  d="M150,150 L50,250 L150,350"
+  style={{ strokeWidth: '15px', stroke: '#0486bb', fill: 'none' }}
+  initial={{ pathLength: 0, opacity: 0 }}
+  animate={{ pathLength: 1, opacity: 1 }}
+  transition={{ duration: 1.5, delay: 3.9, ease: 'easeOut' }}
+/>
+
 
       {/* Circles */}
       {/* Red Circles */}
@@ -238,8 +244,9 @@ const Hero = () => {
         transition={{ duration: 1, delay: 3, ease: 'easeOut' }}
       />
     </motion.svg>
-  </motion.div>
-</div>
+        </motion.div>
+      </div>
+
 
             </div>
 
