@@ -318,57 +318,134 @@ const Hero = () => {
 
       {/* Show big circle when scrolling down */}
       {isScrollingDown && showBigCircle && (
-        <motion.svg width="400" height="400" viewBox="0 0 400 400">
-  {/* Define Gradient */}
-  <defs>
-    <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style={{ stopColor: "#9e5c32", stopOpacity: 1 }} />  {/* Deep Orange */}
-      <stop offset="30%" style={{ stopColor: "#c78f56", stopOpacity: 1 }} />  {/* Burnt Amber */}
-      <stop offset="60%" style={{ stopColor: "#e2b776", stopOpacity: 1 }} />  {/* Soft Golden Yellow */}
-      <stop offset="100%" style={{ stopColor: "#f4e2c2", stopOpacity: 1 }} />  {/* Pale Gold */}
-    </linearGradient>
-  </defs>
 
-  {/* Circle Animation */}
+        
+//         <motion.svg width="400" height="400" viewBox="0 0 400 400">
+
+//   <defs>
+//     <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+//       <stop offset="0%" style={{ stopColor: "#9e5c32", stopOpacity: 1 }} />  {/* Deep Orange */}
+//       <stop offset="30%" style={{ stopColor: "#c78f56", stopOpacity: 1 }} />  {/* Burnt Amber */}
+//       <stop offset="60%" style={{ stopColor: "#e2b776", stopOpacity: 1 }} />  {/* Soft Golden Yellow */}
+//       <stop offset="100%" style={{ stopColor: "#f4e2c2", stopOpacity: 1 }} />  {/* Pale Gold */}
+//     </linearGradient>
+//   </defs>
+
+ 
+//   <motion.path
+//     d="M150,200 C150,120 250,120 250,200 C250,280 150,280 150,200"
+//     fill="transparent"
+//     stroke="url(#grad1)" 
+//     strokeWidth="20"
+//     initial={{ opacity: 0, rotate: 0 }}
+//     animate={{ opacity: 1, rotate: 360 }}
+//     transition={{ duration: 2, ease: 'easeInOut' }} 
+//   />
+
+
+
+//   <motion.text
+//     x="-10" y="270"  // Position the "G" after "LET'S"
+//     fontSize="200"
+//     fill="url(#grad1)"  // Apply gradient fill
+//     initial={{ opacity: 0 }}
+//     animate={{ opacity: 1 }}
+//     transition={{ duration: 1, delay: 2, ease: 'easeInOut' }} // Fade in after "LET'S"
+//   >
+//     G
+//   </motion.text>
+
+//   <motion.text
+//   x="260" y="280"  // Position the "!" after the "G"
+//   fontSize="200"
+//   fill="url(#grad1)"  // Apply gradient fill
+//   initial={{ opacity: 0 }}
+//   animate={{ opacity: 1 }}
+//   transition={{ duration: 1, delay: 2.5, ease: 'easeInOut' }} // Fade in after the "G"
+// >
+//   !
+// </motion.text>
+// </motion.svg>
+
+
+
+
+
+<motion.svg
+  xmlns="http://www.w3.org/2000/svg"
+  xmlnsXlink="http://www.w3.org/1999/xlink"
+  version="1.1"
+  viewBox="-275 367 60 60"
+  width="400"
+  height="400"
+  initial={{ opacity: 0, rotate: 0 }}
+  animate={{ opacity: 1, rotate: 360 }}
+  transition={{ duration: 2, ease: 'easeInOut' }}
+>
   <motion.path
-    d="M150,200 C150,120 250,120 250,200 C250,280 150,280 150,200"
-    fill="transparent"
-    stroke="url(#grad1)"  // Apply gradient stroke
-    strokeWidth="20"
+    d="M-250,425c-2.9,0-6-0.7-6-0.7c-10.9-2.7-19-12.5-19-24.3c0-1,0-1.9,0.2-2.9c3.2-0.1,7,0.5,5.9,1.6c-1.7,1.7-0.9,8.6,2.6,6c3.5-2.6,5.2-6,4.3-8.6c-0.9-2.6,6-3.4,6,0.9s-1.7,3.4-2.6,6c-0.9,2.6,0.9,2.6,1.7,3.5c0.9,0.9,3.4,2.6,0.9,8.6C-258,419.6-253.3,422.9-250,425z"
+    fill="#50DD8E" // st1 color (fill="#50DD8E")
     initial={{ opacity: 0, rotate: 0 }}
     animate={{ opacity: 1, rotate: 360 }}
-    transition={{ duration: 2, ease: 'easeInOut' }} // Circle animation runs first
+    transition={{ duration: 2, ease: 'easeInOut' }}
   />
-
-
-
-  {/* Drawing the letter "G" */}
-  <motion.text
-    x="-10" y="270"  // Position the "G" after "LET'S"
-    fontSize="200"
-    fill="url(#grad1)"  // Apply gradient fill
-    initial={{ opacity: 0 }}
-    animate={{ opacity: 1 }}
-    transition={{ duration: 1, delay: 2, ease: 'easeInOut' }} // Fade in after "LET'S"
-  >
-    G
-  </motion.text>
-
-  <motion.text
-  x="260" y="280"  // Position the "!" after the "G"
-  fontSize="200"
-  fill="url(#grad1)"  // Apply gradient fill
-  initial={{ opacity: 0 }}
-  animate={{ opacity: 1 }}
-  transition={{ duration: 1, delay: 2.5, ease: 'easeInOut' }} // Fade in after the "G"
->
-  !
-</motion.text>
+  <motion.path
+    d="M-232.8,401.7c1.7,1.7-1.7,2.6-2.6,5.2c-0.9,2.6-4.3,2.6-5.2,1.7c-0.9-0.9-2.6-1.7-4.3-2.6c-1.7-0.9,0-2.6,1.7-1.7c1.7,0.9,2.4-2.6,4.3-2.6C-237.9,401.7-234.5,400-232.8,401.7z"
+    fill="#0486bb" // st2 color (fill="#80D6FA")
+    initial={{ opacity: 0, rotate: 0 }}
+    animate={{ opacity: 1, rotate: 360 }}
+    transition={{ duration: 2, ease: 'easeInOut' }}
+  />
+  <motion.path
+    d="M-240.5,376.9c7.1,2.9,12.6,9.1,14.7,16.6c-3.2,1.4-8.3,2-9.5,1.4c-1.7-0.9-1.7-5.2-4.8-5.3c-1.2,0-2.6,5.2-4.3,6c-1.7,0.9-2.6-2.6-4.3-5.2c-1.7-2.6,2.6-5.2,4.3-5.2c1.7,0,1.7-4.3,1.7-5.2c0-0.9-1.7-1.9-1.2-4.3C-242,376.3-240.5,376.9-240.5,376.9z"
+    fill="#fec47c" // st3 color (fill="#50dd8e")
+    initial={{ opacity: 0, rotate: 0 }}
+    animate={{ opacity: 1, rotate: 360 }}
+    transition={{ duration: 2, ease: 'easeInOut' }}
+  />
+  <motion.path
+    d="M-248.9,415.7c0.9,0.9,1.7,2.6,0.9,3.4c-0.9,0.9-2.6,0.9-3.4,0C-252.7,417.9-249.7,414.8-248.9,415.7z"
+    fill="#0486bb" // st1 color (fill="#50DD8E")
+    initial={{ opacity: 0, rotate: 0 }}
+    animate={{ opacity: 1, rotate: 360 }}
+    transition={{ duration: 2, ease: 'easeInOut' }}
+  />
+  <motion.path
+    d="M-248,419.1c0.9-0.9,0-2.6-0.9-3.4c-0.9-0.9-3.8,2.2-2.6,3.4C-250.6,420-248.9,420-248,419.1z"
+    fill="#0486bb" // st2 color (fill="#80D6FA")
+    initial={{ opacity: 0, rotate: 0 }}
+    animate={{ opacity: 1, rotate: 360 }}
+    transition={{ duration: 2, ease: 'easeInOut' }}
+  />
+  <motion.path
+    d="M-235.4,406.9c0.9-2.6,4.3-3.5,2.6-5.2c-1.7-1.7-5.2,0-6,0c-1.9,0-2.6,3.4-4.3,2.6c-1.7-0.9-3.4,0.9-1.7,1.7c1.7,0.9,3.4,1.7,4.3,2.6C-239.7,409.5-236.2,409.5-235.4,406.9z"
+    fill="#0486bb" // st2 color (fill="#80D6FA")
+    initial={{ opacity: 0, rotate: 0 }}
+    animate={{ opacity: 1, rotate: 360 }}
+    transition={{ duration: 2, ease: 'easeInOut' }}
+  />
+  <motion.path
+    d="M-225.2,396.5c0.2,1.1,0.2,2.3,0.2,3.5c0,13.8-11.2,25-25,25c-3.3-2.1-8-5.4-6-9.9c2.6-6,0-7.8-0.9-8.6c-0.9-0.9-2.6-0.9-1.7-3.5c0.9-2.6,2.6-1.7,2.6-6c0-4.3-6.9-3.4-6-0.9c0.9,2.6-0.9,6-4.3,8.6c-3.4,2.6-4.3-4.3-2.6-6c1.2-1.2-2.6-1.8-5.9-1.6l0.6-3.1c0.7-3.3,3.3-8.2,5.5-10.4c0,0,1.3-1.4,2.8-2.5l0,0l3.9,4.9l4-5c0.8-0.9,2.4-3.6,2.9-5.8l0.2,0c1.7-0.3,4.6-0.2,5-0.2c2.1,0,4.2,0.3,6.1,0.8c-0.5,2.4,1.2,3.4,1.2,4.3c0,0.9,0,5.2-1.7,5.2s-6,2.6-4.3,5.2c1.7,2.6,2.6,6,4.3,5.2c1.7-0.9,3.1-6.1,4.3-6c3,0.1,3,4.5,4.8,5.3c1.2,0.6,6.3,0,9.5-1.4L-225.2,396.5z"
+    fill="#0486bb" // st3 color (fill="#50dd8e")
+    initial={{ opacity: 0, rotate: 0 }}
+    animate={{ opacity: 1, rotate: 360 }}
+    transition={{ duration: 2, ease: 'easeInOut' }}
+  />
+  <motion.path
+    d="M-261,374c0-0.5-0.5-1-1-1s-1,0.5-1,1s0.5,1,1,1S-261,374.5-261,374"
+    fill="#fe6275" // st4 color (fill="#51565F")
+    initial={{ opacity: 0, rotate: 0 }}
+    animate={{ opacity: 1, rotate: 360 }}
+    transition={{ duration: 2, ease: 'easeInOut' }}
+  />
+  <motion.path
+    d="M-255,374c0,0.4-0.1,0.8-0.1,1.2c-0.5,2.2-2,4.9-2.9,5.8l-4,5l-3.9-4.9l-0.1-0.1c-1-1.3-3-4.5-3-7c0-3.9,3.1-7,7-7S-255,370.1-255,374"
+    fill="#fe6275" // st4 color (fill="#51565F")
+    initial={{ opacity: 0, rotate: 0 }}
+    animate={{ opacity: 1, rotate: 360 }}
+    transition={{ duration: 2, ease: 'easeInOut' }}
+  />
 </motion.svg>
-
-
-
-
 
 
 
