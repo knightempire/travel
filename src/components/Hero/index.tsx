@@ -38,9 +38,9 @@ const Hero = () => {
     initial={{ opacity: 0, x: -100, scale: 0.95 }}
     animate={{ opacity: 1, x: 0, scale: 1 }}
     transition={{
-      duration: 1.5,
+      duration: 1,
       ease: 'easeOut',
-      delay: 1,
+      delay: 0.5,
     }}
     className="relative w-[400px] h-[400px]"
   >
@@ -49,7 +49,7 @@ const Hero = () => {
       className="w-full h-full"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      transition={{ duration: 1.5, delay: 1 }}
+      transition={{ duration: 1.5}}
     >
       {/* Connecting Lines */}
       <motion.path
@@ -58,7 +58,7 @@ const Hero = () => {
         style={{ strokeWidth: '15px', stroke: '#fe6275' , fill: 'none' }}
         initial={{ pathLength: 0, opacity: 0 }}
         animate={{ pathLength: 1, opacity: 1 }}
-        transition={{ duration: 1.5, delay: 4.5, ease: 'easeOut' }}
+        transition={{ duration: 1.5, delay: 3.0, ease: 'easeOut' }}
       />
       <motion.path
         className="line"
@@ -66,7 +66,7 @@ const Hero = () => {
         style={{ strokeWidth: '15px', stroke: '#fec47c', fill: 'none' }}
         initial={{ pathLength: 0, opacity: 0 }}
         animate={{ pathLength: 1, opacity: 1 }}
-        transition={{ duration: 1.5, delay: 5, ease: 'easeOut' }}
+        transition={{ duration: 1.5, delay: 3.3, ease: 'easeOut' }}
       />
       <motion.path
         className="line"
@@ -74,7 +74,7 @@ const Hero = () => {
         style={{ strokeWidth: '15px', stroke: '#5bce68', fill: 'none' }}
         initial={{ pathLength: 0, opacity: 0 }}
         animate={{ pathLength: 1, opacity: 1 }}
-        transition={{ duration: 1.5, delay: 5.5, ease: 'easeOut' }}
+        transition={{ duration: 1.5, delay: 3.6, ease: 'easeOut' }}
       />
       <motion.path
         className="line"
@@ -82,7 +82,7 @@ const Hero = () => {
         style={{ strokeWidth: '15px', stroke: '#0486bb' , fill: 'none'}}
         initial={{ pathLength: 0, opacity: 0 }}
         animate={{ pathLength: 1, opacity: 1 }}
-        transition={{ duration: 1.5, delay: 6, ease: 'easeOut' }}
+        transition={{ duration: 1.5, delay: 3.9, ease: 'easeOut' }}
       />
 
       {/* Circles */}
@@ -103,7 +103,7 @@ const Hero = () => {
         fill="#fe6275"
         initial={{ opacity: 0, scale: 0 }}
         animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 1, delay: 0.3, ease: 'easeOut' }}
+        transition={{ duration: 1, delay: 0.2, ease: 'easeOut' }}
       />
       <motion.circle
         cx="50"
@@ -112,7 +112,7 @@ const Hero = () => {
         fill="#fe6275"
         initial={{ opacity: 0, scale: 0 }}
         animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 1, delay: 0.6, ease: 'easeOut' }}
+        transition={{ duration: 1, delay: 0.4, ease: 'easeOut' }}
       />
       <motion.circle
         cx="250"
@@ -121,7 +121,7 @@ const Hero = () => {
         fill="#fe6275"
         initial={{ opacity: 0, scale: 0 }}
         animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 1, delay: 0.9, ease: 'easeOut' }}
+        transition={{ duration: 1, delay: 0.6, ease: 'easeOut' }}
       />
 
       {/* Blue Circles */}
@@ -132,7 +132,7 @@ const Hero = () => {
         fill="#0486bb"
         initial={{ opacity: 0, scale: 0 }}
         animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 1, delay: 1, ease: 'easeOut' }}
+        transition={{ duration: 1, delay: 0.8, ease: 'easeOut' }}
       />
       <motion.circle
         cx="50"
@@ -141,7 +141,7 @@ const Hero = () => {
         fill="#0486bb"
         initial={{ opacity: 0, scale: 0 }}
         animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 1, delay: 1.3, ease: 'easeOut' }}
+        transition={{ duration: 1, delay: 1, ease: 'easeOut' }}
       />
       <motion.circle
         cx="150"
@@ -150,7 +150,7 @@ const Hero = () => {
         fill="#0486bb"
         initial={{ opacity: 0, scale: 0 }}
         animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 1, delay: 1.6, ease: 'easeOut' }}
+        transition={{ duration: 1, delay: 1.2, ease: 'easeOut' }}
       />
       <motion.circle
         cx="150"
@@ -159,7 +159,7 @@ const Hero = () => {
         fill="#0486bb"
         initial={{ opacity: 0, scale: 0 }}
         animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 1, delay: 1.9, ease: 'easeOut' }}
+        transition={{ duration: 1, delay: 1.4, ease: 'easeOut' }}
       />
 
       {/* Green Circles */}
@@ -170,7 +170,7 @@ const Hero = () => {
         fill="#5bce68"
         initial={{ opacity: 0, scale: 0 }}
         animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 1, delay: 2, ease: 'easeOut' }}
+        transition={{ duration: 1, delay: 1.6, ease: 'easeOut' }}
       />
       <motion.circle
         cx="250"
@@ -179,7 +179,7 @@ const Hero = () => {
         fill="#5bce68"
         initial={{ opacity: 0, scale: 0 }}
         animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 1, delay: 2.3, ease: 'easeOut' }}
+        transition={{ duration: 1, delay: 1.8, ease: 'easeOut' }}
       />
       <motion.circle
         cx="150"
@@ -188,7 +188,7 @@ const Hero = () => {
         fill="#5bce68"
         initial={{ opacity: 0, scale: 0 }}
         animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 1, delay: 2.6, ease: 'easeOut' }}
+        transition={{ duration: 1, delay: 2, ease: 'easeOut' }}
       />
       <motion.circle
         cx="350"
@@ -197,7 +197,7 @@ const Hero = () => {
         fill="#5bce68"
         initial={{ opacity: 0, scale: 0 }}
         animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 1, delay: 2.9, ease: 'easeOut' }}
+        transition={{ duration: 1, delay: 2.2, ease: 'easeOut' }}
       />
 
       {/* Yellow Circles */}
@@ -208,7 +208,7 @@ const Hero = () => {
         fill="#fec47c"
         initial={{ opacity: 0, scale: 0 }}
         animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 1, delay: 3, ease: 'easeOut' }}
+        transition={{ duration: 1, delay: 2.4, ease: 'easeOut' }}
       />
       <motion.circle
         cx="350"
@@ -217,7 +217,7 @@ const Hero = () => {
         fill="#fec47c"
         initial={{ opacity: 0, scale: 0 }}
         animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 1, delay: 3.3, ease: 'easeOut' }}
+        transition={{ duration: 1, delay: 2.6, ease: 'easeOut' }}
       />
       <motion.circle
         cx="350"
@@ -226,7 +226,7 @@ const Hero = () => {
         fill="#fec47c"
         initial={{ opacity: 0, scale: 0 }}
         animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 1, delay: 3.6, ease: 'easeOut' }}
+        transition={{ duration: 1, delay: 2.8, ease: 'easeOut' }}
       />
       <motion.circle
         cx="250"
@@ -235,7 +235,7 @@ const Hero = () => {
         fill="#fec47c"
         initial={{ opacity: 0, scale: 0 }}
         animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 1, delay: 3.9, ease: 'easeOut' }}
+        transition={{ duration: 1, delay: 3, ease: 'easeOut' }}
       />
     </motion.svg>
   </motion.div>
