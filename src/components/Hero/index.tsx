@@ -1,12 +1,86 @@
 "use client";
 import Link from "next/link";
+
+import { motion, useAnimation, useScroll } from 'framer-motion';
 import { useEffect, useState } from 'react';
-import { motion } from 'framer-motion';
 
 
 const Hero = () => {
 
+  const controls = useAnimation();
+  const { scrollY } = useScroll();
+  const [lastScrollY, setLastScrollY] = useState(0);
+  const [isInView, setIsInView] = useState(false);
+  const [isScrollingDown, setIsScrollingDown] = useState(false); // Track scroll direction
+  const [showBigCircle, setShowBigCircle] = useState(false); // For displaying the big circle
   
+  // Intersection Observer for detecting if Hero component is in view
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          setIsInView(entry.isIntersecting); // Update state when Hero component enters or leaves the viewport
+        });
+      },
+      { threshold: 0.1 }
+    );
+  
+    const element = document.getElementById('hero');
+    if (element) {
+      observer.observe(element);
+    }
+  
+    // Cleanup the observer on unmount
+    return () => {
+      if (element) {
+        observer.unobserve(element);
+      }
+    };
+  }, []);
+  
+  // Detect scroll direction and trigger animation change when Hero component is in view
+  useEffect(() => {
+    if (!isInView) return;
+  
+    const unsubscribe = scrollY.onChange((latestY) => {
+      if (latestY > lastScrollY) {
+        // Scrolling down: reverse animation and show big circle
+        setIsScrollingDown(true);
+        setShowBigCircle(true); // Show large circle
+        controls.start({
+          opacity: 0,
+          pathLength: 0,
+          transition: { duration: 1, ease: 'easeOut' },
+        });
+      } else {
+        // Scrolling up: reset animation and hide big circle
+        setIsScrollingDown(false);
+        setShowBigCircle(false); // Hide large circle
+        controls.start({
+          opacity: 1,
+          pathLength: 1,
+          transition: { duration: 1, ease: 'easeOut' },
+        });
+      }
+      setLastScrollY(latestY);
+    });
+  
+    return () => unsubscribe();
+  }, [scrollY, lastScrollY, controls, isInView]);
+  
+  // Trigger line animation when Hero is in view
+  useEffect(() => {
+    if (isInView) {
+      controls.start({
+        opacity: 1,
+        pathLength: 1,
+        transition: { duration: 1.5, ease: 'easeOut', delay: 1.5 },
+      });
+    }
+  }, [controls, isInView]);
+
+
+
   return (
     <>
       <section
@@ -37,215 +111,275 @@ const Hero = () => {
               </div> */}
 
 
-<div
-        className={`flex justify-center items-center transition-transform duration-300 ease-in-out`}
-
-      >
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1 }}
-          className="relative w-[400px] h-[400px]"
-        >
-       <motion.svg
+<div id="hero" className="flex justify-center items-center transition-transform duration-300 ease-in-out">
+  <motion.div
+    initial={{ opacity: 0 }}
+    animate={{ opacity: 1 }}
+    transition={{ duration: 1 }}
+    className="relative w-[400px] h-[400px]"
+  >
+    <motion.svg
       viewBox="0 0 400 400"
       className="w-full h-full"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      transition={{ duration: 1.5}}
+      transition={{ duration: 1.5 }}
     >
       {/* Connecting Lines */}
       <motion.path
-  className="line"
-  d="M250,150 L150,50 L50,150"
-  style={{ strokeWidth: '15px', stroke: '#fe6275', fill: 'none' }}
-  initial={{ pathLength: 0, opacity: 0 }}
-  animate={{ pathLength: 1, opacity: 1 }}
-  transition={{ duration: 1.5, delay: 3.0, ease: 'easeOut' }}
-/>
-
-<motion.path
-  className="line"
-  d="M250,250 L350,150 L250,50"
-  style={{ strokeWidth: '15px', stroke: '#fec47c', fill: 'none' }}
-  initial={{ pathLength: 0, opacity: 0 }}
-  animate={{ pathLength: 1, opacity: 1 }}
-  transition={{ duration: 1.5, delay: 3.3, ease: 'easeOut' }}
-/>
-
+        className="line"
+        d="M250,150 L150,50 L50,150"
+        style={{ strokeWidth: '15px', stroke: '#fe6275', fill: 'none' }}
+        initial={{ pathLength: 0, opacity: 0 }}
+        animate={controls}
+        transition={{ duration: 1.5, delay: 3.0, ease: 'easeOut' }}
+      />
+      <motion.path
+        className="line"
+        d="M250,250 L350,150 L250,50"
+        style={{ strokeWidth: '15px', stroke: '#fec47c', fill: 'none' }}
+        initial={{ pathLength: 0, opacity: 0 }}
+        animate={controls}
+        transition={{ duration: 1.5, delay: 3.3, ease: 'easeOut' }}
+      />
       <motion.path
         className="line"
         d="M150,250 L250,350 L350,250"
         style={{ strokeWidth: '15px', stroke: '#5bce68', fill: 'none' }}
         initial={{ pathLength: 0, opacity: 0 }}
-        animate={{ pathLength: 1, opacity: 1 }}
+        animate={controls}
         transition={{ duration: 1.5, delay: 3.6, ease: 'easeOut' }}
       />
-<motion.path
-  className="line"
-  d="M150,150 L50,250 L150,350"
-  style={{ strokeWidth: '15px', stroke: '#0486bb', fill: 'none' }}
-  initial={{ pathLength: 0, opacity: 0 }}
-  animate={{ pathLength: 1, opacity: 1 }}
-  transition={{ duration: 1.5, delay: 3.9, ease: 'easeOut' }}
-/>
-
-
-      {/* Circles */}
-      {/* Red Circles */}
-      <motion.circle
-        cx="50"
-        cy="50"
-        r="20"
-        fill="#fe6275"
-        initial={{ opacity: 0, scale: 0 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 1, delay: 0, ease: 'easeOut' }}
-      />
-      <motion.circle
-        cx="150"
-        cy="50"
-        r="20"
-        fill="#fe6275"
-        initial={{ opacity: 0, scale: 0 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 1, delay: 0.2, ease: 'easeOut' }}
-      />
-      <motion.circle
-        cx="50"
-        cy="150"
-        r="20"
-        fill="#fe6275"
-        initial={{ opacity: 0, scale: 0 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 1, delay: 0.4, ease: 'easeOut' }}
-      />
-      <motion.circle
-        cx="250"
-        cy="150"
-        r="20"
-        fill="#fe6275"
-        initial={{ opacity: 0, scale: 0 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 1, delay: 0.6, ease: 'easeOut' }}
+      <motion.path
+        className="line"
+        d="M150,150 L50,250 L150,350"
+        style={{ strokeWidth: '15px', stroke: '#0486bb', fill: 'none' }}
+        initial={{ pathLength: 0, opacity: 0 }}
+        animate={controls}
+        transition={{ duration: 1.5, delay: 3.9, ease: 'easeOut' }}
       />
 
-      {/* Blue Circles */}
-      <motion.circle
-        cx="50"
-        cy="350"
-        r="20"
-        fill="#0486bb"
-        initial={{ opacity: 0, scale: 0 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 1, delay: 0.8, ease: 'easeOut' }}
-      />
-      <motion.circle
-        cx="50"
-        cy="250"
-        r="20"
-        fill="#0486bb"
-        initial={{ opacity: 0, scale: 0 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 1, delay: 1, ease: 'easeOut' }}
-      />
-      <motion.circle
-        cx="150"
-        cy="150"
-        r="20"
-        fill="#0486bb"
-        initial={{ opacity: 0, scale: 0 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 1, delay: 1.2, ease: 'easeOut' }}
-      />
-      <motion.circle
-        cx="150"
-        cy="350"
-        r="20"
-        fill="#0486bb"
-        initial={{ opacity: 0, scale: 0 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 1, delay: 1.4, ease: 'easeOut' }}
-      />
+      {/* Show small circles only when not scrolling down */}
+      {!isScrollingDown && (
+        <>
+          {/* Red Circles */}
+          <motion.circle
+            cx="50"
+            cy="50"
+            r="20"
+            fill="#fe6275"
+            initial={{ opacity: 0, scale: 0 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1, delay: 1.4, ease: 'easeOut' }}
+          />
+          <motion.circle
+            cx="150"
+            cy="50"
+            r="20"
+            fill="#fe6275"
+            initial={{ opacity: 0, scale: 0 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1, delay: 1.3, ease: 'easeOut' }}
+          />
+          <motion.circle
+            cx="50"
+            cy="150"
+            r="20"
+            fill="#fe6275"
+            initial={{ opacity: 0, scale: 0 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1, delay: 1, ease: 'easeOut' }}
+          />
+          <motion.circle
+            cx="250"
+            cy="150"
+            r="20"
+            fill="#fe6275"
+            initial={{ opacity: 0, scale: 0 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1, delay: 0.7, ease: 'easeOut' }}
+          />
 
-      {/* Green Circles */}
-      <motion.circle
-        cx="350"
-        cy="350"
-        r="20"
-        fill="#5bce68"
-        initial={{ opacity: 0, scale: 0 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 1, delay: 1.6, ease: 'easeOut' }}
-      />
-      <motion.circle
-        cx="250"
-        cy="350"
-        r="20"
-        fill="#5bce68"
-        initial={{ opacity: 0, scale: 0 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 1, delay: 1.8, ease: 'easeOut' }}
-      />
-      <motion.circle
-        cx="150"
-        cy="250"
-        r="20"
-        fill="#5bce68"
-        initial={{ opacity: 0, scale: 0 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 1, delay: 2, ease: 'easeOut' }}
-      />
-      <motion.circle
-        cx="350"
-        cy="250"
-        r="20"
-        fill="#5bce68"
-        initial={{ opacity: 0, scale: 0 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 1, delay: 2.2, ease: 'easeOut' }}
-      />
+          {/* Blue Circles */}
+          <motion.circle
+            cx="50"
+            cy="350"
+            r="20"
+            fill="#0486bb"
+            initial={{ opacity: 0, scale: 0 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1, delay: 1.4, ease: 'easeOut' }}
+          />
+          <motion.circle
+            cx="50"
+            cy="250"
+            r="20"
+            fill="#0486bb"
+            initial={{ opacity: 0, scale: 0 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1, delay: 1, ease: 'easeOut' }}
+          />
+          <motion.circle
+            cx="150"
+            cy="150"
+            r="20"
+            fill="#0486bb"
+            initial={{ opacity: 0, scale: 0 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1, delay: 0.7, ease: 'easeOut' }}
+          />
+          <motion.circle
+            cx="150"
+            cy="350"
+            r="20"
+            fill="#0486bb"
+            initial={{ opacity: 0, scale: 0 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1, delay: 1.3, ease: 'easeOut' }}
+          />
 
-      {/* Yellow Circles */}
-      <motion.circle
-        cx="250"
-        cy="50"
-        r="20"
-        fill="#fec47c"
-        initial={{ opacity: 0, scale: 0 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 1, delay: 2.4, ease: 'easeOut' }}
-      />
-      <motion.circle
-        cx="350"
-        cy="50"
-        r="20"
-        fill="#fec47c"
-        initial={{ opacity: 0, scale: 0 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 1, delay: 2.6, ease: 'easeOut' }}
-      />
-      <motion.circle
-        cx="350"
-        cy="150"
-        r="20"
-        fill="#fec47c"
-        initial={{ opacity: 0, scale: 0 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 1, delay: 2.8, ease: 'easeOut' }}
-      />
-      <motion.circle
-        cx="250"
-        cy="250"
-        r="20"
-        fill="#fec47c"
-        initial={{ opacity: 0, scale: 0 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 1, delay: 3, ease: 'easeOut' }}
-      />
+          {/* Green Circles */}
+          <motion.circle
+            cx="350"
+            cy="350"
+            r="20"
+            fill="#5bce68"
+            initial={{ opacity: 0, scale: 0 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1, delay: 1.4, ease: 'easeOut' }}
+          />
+          <motion.circle
+            cx="250"
+            cy="350"
+            r="20"
+            fill="#5bce68"
+            initial={{ opacity: 0, scale: 0 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1, delay: 1, ease: 'easeOut' }}
+          />
+          <motion.circle
+            cx="150"
+            cy="250"
+            r="20"
+            fill="#5bce68"
+            initial={{ opacity: 0, scale: 0 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1, delay: 0.7, ease: 'easeOut' }}
+          />
+          <motion.circle
+            cx="350"
+            cy="250"
+            r="20"
+            fill="#5bce68"
+            initial={{ opacity: 0, scale: 0 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1, delay: 1.3, ease: 'easeOut' }}
+          />
+
+          {/* Yellow Circles */}
+          <motion.circle
+            cx="250"
+            cy="50"
+            r="20"
+            fill="#fec47c"
+            initial={{ opacity: 0, scale: 0 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1, delay: 1.3, ease: 'easeOut' }}
+          />
+          <motion.circle
+            cx="350"
+            cy="50"
+            r="20"
+            fill="#fec47c"
+            initial={{ opacity: 0, scale: 0 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1, delay: 1.4, ease: 'easeOut' }}
+          />
+          <motion.circle
+            cx="350"
+            cy="150"
+            r="20"
+            fill="#fec47c"
+            initial={{ opacity: 0, scale: 0 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1, delay: 1, ease: 'easeOut' }}
+          />
+          <motion.circle
+            cx="250"
+            cy="250"
+            r="20"
+            fill="#fec47c"
+            initial={{ opacity: 0, scale: 0 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1, delay: 0.7, ease: 'easeOut' }}
+          />
+        </>
+      )}
+
+      {/* Show big circle when scrolling down */}
+      {isScrollingDown && showBigCircle && (
+        <motion.svg width="400" height="400" viewBox="0 0 400 400">
+  {/* Define Gradient */}
+  <defs>
+    <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style={{ stopColor: "#9e5c32", stopOpacity: 1 }} />  {/* Deep Orange */}
+      <stop offset="30%" style={{ stopColor: "#c78f56", stopOpacity: 1 }} />  {/* Burnt Amber */}
+      <stop offset="60%" style={{ stopColor: "#e2b776", stopOpacity: 1 }} />  {/* Soft Golden Yellow */}
+      <stop offset="100%" style={{ stopColor: "#f4e2c2", stopOpacity: 1 }} />  {/* Pale Gold */}
+    </linearGradient>
+  </defs>
+
+  {/* Circle Animation */}
+  <motion.path
+    d="M150,200 C150,120 250,120 250,200 C250,280 150,280 150,200"
+    fill="transparent"
+    stroke="url(#grad1)"  // Apply gradient stroke
+    strokeWidth="20"
+    initial={{ opacity: 0, rotate: 0 }}
+    animate={{ opacity: 1, rotate: 360 }}
+    transition={{ duration: 2, ease: 'easeInOut' }} // Circle animation runs first
+  />
+
+
+
+  {/* Drawing the letter "G" */}
+  <motion.text
+    x="-10" y="270"  // Position the "G" after "LET'S"
+    fontSize="200"
+    fill="url(#grad1)"  // Apply gradient fill
+    initial={{ opacity: 0 }}
+    animate={{ opacity: 1 }}
+    transition={{ duration: 1, delay: 2, ease: 'easeInOut' }} // Fade in after "LET'S"
+  >
+    G
+  </motion.text>
+
+  <motion.text
+  x="260" y="280"  // Position the "!" after the "G"
+  fontSize="200"
+  fill="url(#grad1)"  // Apply gradient fill
+  initial={{ opacity: 0 }}
+  animate={{ opacity: 1 }}
+  transition={{ duration: 1, delay: 2.5, ease: 'easeInOut' }} // Fade in after the "G"
+>
+  !
+</motion.text>
+</motion.svg>
+
+
+
+
+
+
+
+
+
+
+      )}
     </motion.svg>
-        </motion.div>
-      </div>
+  </motion.div>
+</div>
+
 
 
             </div>
