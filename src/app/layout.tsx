@@ -22,7 +22,7 @@ export default function RootLayout({
         {/* Meta tags for SEO */}
         <meta
           name="description"
-          content="Travel Recommendation System & Trip Planning Platform. Welcome to ExploreIQ! This platform helps users plan their trips by recommending destinations, activities, and experiences based on personalized preferences. The system leverages machine learning (ML) models for recommendations and integrates a seamless itinerary planning experience."
+          content="A Travel Recommendation System & Trip Planning Platform. Welcome to ExploreIQ! This platform helps users plan their trips by recommending destinations, activities, and experiences based on personalized preferences."
         />
         <meta name="author" content="ExploreIQ Team - https://github.com/knightempire/travel" />
         
