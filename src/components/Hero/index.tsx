@@ -486,10 +486,8 @@ const Hero = () => {
                   animate={{ opacity: 1, y: 0 }}    // Fade-in and slide up
                   transition={{ duration: 1, delay: 1 }} // Delay to sync with title animation
                 >
-                  Discover your next adventure with ExploreIQ! Our platform
-                  leverages AI to offer personalized travel recommendations,
-                  manage your trip itineraries, and help you book experiences
-                  tailored to your preferences.
+                  Discover your next adventure with ExploreIQ! Our platform leverages AI to offer personalized travel recommendations, simplify itinerary planning, and make booking experiences tailored to your preferences effortless.
+
                 </motion.p>
 
                 {/* Buttons Animation */}

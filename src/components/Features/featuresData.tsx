@@ -27,7 +27,7 @@ const featuresData: Feature[] = [
     ),
     title: "Travel Recommendations",
     paragraph:
-     "Discover the best places to visit for your next trip. From relaxing getaways to exciting adventures, we’ve got the perfect destinations for you. Ready to explore your next vacation spot?",
+     "Discover the top destinations for your next trip. Whether you're seeking a relaxing retreat or an exciting adventure, we have the perfect options for you. Ready to find your next vacation spot?",
   },
 
   {
@@ -62,7 +62,7 @@ const featuresData: Feature[] = [
     ),
     title: "Trip Planner",
     paragraph:
-      "Plan the perfect getaway with ease. Whether you're seeking adventure, relaxation, or a mix of both, our trip planner helps you create an itinerary that suits your needs. Start planning your dream trip today!",
+      "Effortlessly plan your perfect retreat. Be it adventure, relaxation, or a blend of both, our trip planner helps you to design an itinerary tailored to your needs. Start creating your dream vacation today!",
   },
   
   {
@@ -78,7 +78,7 @@ const featuresData: Feature[] = [
     ),
     title: "Fully Customizable",
     paragraph:
-   "Make your experience uniquely yours by adjusting every detail. Whether it's the locations, activities, or schedule, you have full control to craft a journey that suits your style.",
+   "Create a truly personalized experience by customizing every detail. From destinations and activities to your schedule, you have complete control to design a journey that perfectly matches your preferences.",
   },
 
 
