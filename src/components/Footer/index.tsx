@@ -406,18 +406,7 @@ const Footer = () => {
         </svg>
       </div>
       </footer>
-      <style>
-        {`
-          @keyframes zoomInOut {
-            0%, 100% {
-              transform: scale(1);
-            }
-            50% {
-              transform: scale(2);
-            }
-          }
-        `}
-      </style>
+
     </>
   );
 };
