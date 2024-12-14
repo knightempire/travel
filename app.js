@@ -1,18 +1,19 @@
 // app.js
 const express = require('express');
-const { db, rtdb } = require('./db/db'); // Import Firebase instances
+const { db, rtdb } = require('./config/db');
 
+const userRoutes = require('./routes/user.router');
 const app = express();
 const port = 3005;
 
-// Simple route to check server status
+app.use(express.json());
+
 app.get('/', (req, res) => {
     res.send('Server is running and connected to Firebase!');
 });
 
 
-
-// Example route to check Firebase Realtime Database connection
+app.use('/user', userRoutes);
 app.get('/check-db', (req, res) => {
     rtdb.ref('.info/connected').once('value', (snapshot) => {
         if (snapshot.val() === true) {
@@ -23,7 +24,7 @@ app.get('/check-db', (req, res) => {
     });
 });
 
-// Start the server
+
 app.listen(port, () => {
     console.log(`Server is running on http://localhost:${port}`);
 });
