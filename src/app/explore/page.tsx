@@ -12,13 +12,13 @@ interface City {
 
 // Constants for location
 const COUNTRY = {
-  name: 'India',
-  code: 'IN'
+  name: "India",
+  code: "IN",
 };
 
 const STATE = {
-  name: 'Tamil Nadu',
-  code: 'TN'
+  name: "Tamil Nadu",
+  code: "TN",
 };
 
 const ExplorePage: React.FC = () => {
@@ -36,7 +36,6 @@ const ExplorePage: React.FC = () => {
   const PLACE_API_KEY = process.env.NEXT_PUBLIC_PLACE_API_KEY;
   const PLACE_API_BASE_URL = process.env.NEXT_PUBLIC_PLACE_API_BASE_URL;
 
-
   useEffect(() => {
     // Check if API key or URL is missing
     if (!PLACE_API_KEY || !PLACE_API_BASE_URL) {
@@ -51,31 +50,34 @@ const ExplorePage: React.FC = () => {
 
   const fetchTamilNaduDistricts = async () => {
     try {
-      const response = await fetch(`${PLACE_API_BASE_URL}/countries/${COUNTRY.code}/states/${STATE.code}/cities`, {
-        headers: {
-          "X-CSCAPI-KEY": PLACE_API_KEY || '',
+      const response = await fetch(
+        `${PLACE_API_BASE_URL}/countries/${COUNTRY.code}/states/${STATE.code}/cities`,
+        {
+          headers: {
+            "X-CSCAPI-KEY": PLACE_API_KEY || "",
+          },
         }
-      });
+      );
 
       if (!response.ok) {
-        throw new Error('Failed to fetch districts');
+        throw new Error("Failed to fetch districts");
       }
 
       const data: City[] = await response.json();
-      
+
       // Ensure all items are strings and create unique districts
       const districts = Array.from(
         new Set(
           data
             .map((city) => city.name)
-            .filter((name): name is string => typeof name === 'string')
+            .filter((name): name is string => typeof name === "string")
         )
       );
 
       setAllDistricts(districts);
     } catch (error) {
-      console.error('Error fetching districts:', error);
-      message.error('Failed to load districts. Please try again.');
+      console.error("Error fetching districts:", error);
+      message.error("Failed to load districts. Please try again.");
     }
   };
 
@@ -101,11 +103,11 @@ const ExplorePage: React.FC = () => {
     if (value.length > 0) {
       // Filter districts based on input
       const suggestions = allDistricts
-        .filter(district => 
+        .filter((district) =>
           district.toLowerCase().includes(value.toLowerCase())
         )
-        .map(district => ({ value: district }));
-      
+        .map((district) => ({ value: district }));
+
       setFromPlaceOptions(suggestions);
     } else {
       setFromPlaceOptions([]);
@@ -116,11 +118,11 @@ const ExplorePage: React.FC = () => {
     if (value.length > 0) {
       // Filter districts based on input
       const suggestions = allDistricts
-        .filter(district => 
+        .filter((district) =>
           district.toLowerCase().includes(value.toLowerCase())
         )
-        .map(district => ({ value: district }));
-      
+        .map((district) => ({ value: district }));
+
       setToPlaceOptions(suggestions);
     } else {
       setToPlaceOptions([]);
@@ -142,39 +144,27 @@ const ExplorePage: React.FC = () => {
   return (
     <>
       <div
-        className={`transition-opacity duration-100 ${isPageLoaded ? "opacity-100" : "opacity-0"}`}
+        className={`transition-opacity duration-100 ${
+          isPageLoaded ? "opacity-100" : "opacity-0"
+        }`}
       >
-        <Breadcrumb
-          pageName="Travel Search"
-          description={`travels`}
-        />
+        <Breadcrumb pageName="Travel Search" description={`travels`} />
 
         <section className="pt-[40px]">
           <div className="container px-4">
             <Form
               form={form}
               onFinish={onFinish}
-              layout="inline"
+              layout="vertical"  // Changed to vertical layout
               className="flex flex-wrap justify-center items-center gap-4"
             >
-              {/* From Place */}
-              {/* <Form.Item
-                name="fromPlace"
-                rules={[{ required: true, message: "Please input your starting place in Tamil Nadu!" }]}
-                className="w-full sm:w-1/4"
-              >
-                <AutoComplete
-                  options={fromPlaceOptions}
-                  onSearch={handleFromPlaceSearch}
-                  placeholder="From Place"
-                  className="w-full"
-                />
-              </Form.Item> */}
-
               {/* To Place */}
               <Form.Item
                 name="toPlace"
-                rules={[{ required: true, message: "Please input your destination in Tamil Nadu!" }]}
+                label={<span className="text-sm font-medium text-gray-500">To Place</span>}
+                rules={[
+                  { required: true, message: "Please input your destination in Tamil Nadu!" },
+                ]}
                 className="w-full sm:w-1/4"
               >
                 <AutoComplete
@@ -188,6 +178,7 @@ const ExplorePage: React.FC = () => {
               {/* From Date Picker */}
               <Form.Item
                 name="startdate"
+                label={<span className="text-sm font-medium text-gray-500">Start Date</span>}
                 rules={[{ required: true, message: "Please select a From date!" }]}
                 className="w-full sm:w-1/6"
               >
@@ -203,6 +194,7 @@ const ExplorePage: React.FC = () => {
               {/* To Date Picker */}
               <Form.Item
                 name="enddate"
+                label={<span className="text-sm font-medium text-gray-500">End Date</span>}
                 rules={[{ required: true, message: "Please select a To date!" }]}
                 className="w-full sm:w-1/6"
               >
@@ -216,7 +208,7 @@ const ExplorePage: React.FC = () => {
               </Form.Item>
 
               {/* Search Button */}
-              <Form.Item className="w-full sm:w-auto">
+              <Form.Item className="w-full sm:w-auto self-end">
                 <Button
                   type="primary"
                   htmlType="submit"
