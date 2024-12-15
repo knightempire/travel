@@ -10,7 +10,7 @@ const validateUserData = async(userData, schema) => {
         }
     }
 
-    // Check for email uniqueness in Realtime Database
+
     if (userData.email) {
         const emailSnapshot = await rtdb.ref('users').orderByChild('email').equalTo(userData.email).once('value');
 
@@ -20,7 +20,7 @@ const validateUserData = async(userData, schema) => {
         }
     }
 
-    // If no validation errors
+
     return { valid: true };
 };
 
