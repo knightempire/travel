@@ -1,12 +1,13 @@
 "use client";
+
 import React, { useState, useEffect } from "react";
 import { Button, Form, DatePicker, AutoComplete, message } from "antd";
 import dayjs from "dayjs";
 import Breadcrumb from "@/components/Common/Breadcrumb";
 import InputComponent from "@/components/input/input";
+
 interface City {
   name: string;
-  // Add other properties as needed
 }
 
 // Constants for location
@@ -25,27 +26,34 @@ const ExplorePage: React.FC = () => {
   const [isPageLoaded, setIsPageLoaded] = useState(false);
   const [fromDate, setFromDate] = useState<dayjs.Dayjs | null>(null);
   const [tripDays, setTripDays] = useState<number>(0);
-  
+
   // State for district suggestions
   const [fromPlaceOptions, setFromPlaceOptions] = useState<{ value: string }[]>([]);
   const [toPlaceOptions, setToPlaceOptions] = useState<{ value: string }[]>([]);
   const [allDistricts, setAllDistricts] = useState<string[]>([]);
 
-  // API configuration
-  const API_KEY = 'YzZJOGF3STBZM3VtNmxHUDBUcmI3Wm90RVZoUWRoVlBRekd6WERzZA==';
-  const API_BASE_URL = 'https://api.countrystatecity.in/v1';
+  // Get API key and base URL from environment variables
+  const PLACE_API_KEY = process.env.NEXT_PUBLIC_PLACE_API_KEY;
+  const PLACE_API_BASE_URL = process.env.NEXT_PUBLIC_PLACE_API_BASE_URL;
+
 
   useEffect(() => {
+    // Check if API key or URL is missing
+    if (!PLACE_API_KEY || !PLACE_API_BASE_URL) {
+      message.error("API key or base URL is missing!");
+      return;
+    }
+
     // Fetch Tamil Nadu districts on component mount
     fetchTamilNaduDistricts();
     setTimeout(() => setIsPageLoaded(true), 100);
-  }, []);
+  }, [PLACE_API_KEY, PLACE_API_BASE_URL]);
 
   const fetchTamilNaduDistricts = async () => {
     try {
-      const response = await fetch(`${API_BASE_URL}/countries/${COUNTRY.code}/states/${STATE.code}/cities`, {
+      const response = await fetch(`${PLACE_API_BASE_URL}/countries/${COUNTRY.code}/states/${STATE.code}/cities`, {
         headers: {
-          "X-CSCAPI-KEY": API_KEY
+          "X-CSCAPI-KEY": PLACE_API_KEY || '',
         }
       });
 
@@ -134,17 +142,15 @@ const ExplorePage: React.FC = () => {
   return (
     <>
       <div
-        className={`transition-opacity duration-100 ${
-          isPageLoaded ? "opacity-100" : "opacity-0"
-        }`}
+        className={`transition-opacity duration-100 ${isPageLoaded ? "opacity-100" : "opacity-0"}`}
       >
         <Breadcrumb
           pageName="Travel Search"
-          description={`travels}`}
+          description={`travels`}
         />
 
         <section className="pt-[40px]">
-          <div className="container  px-4">
+          <div className="container px-4">
             <Form
               form={form}
               onFinish={onFinish}
@@ -154,12 +160,7 @@ const ExplorePage: React.FC = () => {
               {/* From Place */}
               <Form.Item
                 name="fromPlace"
-                rules={[
-                  {
-                    required: true,
-                    message: "Please input your starting place in Tamil Nadu!",
-                  },
-                ]}
+                rules={[{ required: true, message: "Please input your starting place in Tamil Nadu!" }]}
                 className="w-full sm:w-1/4"
               >
                 <AutoComplete
@@ -173,12 +174,7 @@ const ExplorePage: React.FC = () => {
               {/* To Place */}
               <Form.Item
                 name="toPlace"
-                rules={[
-                  {
-                    required: true,
-                    message: "Please input your destination in Tamil Nadu!",
-                  },
-                ]}
+                rules={[{ required: true, message: "Please input your destination in Tamil Nadu!" }]}
                 className="w-full sm:w-1/4"
               >
                 <AutoComplete
@@ -192,12 +188,7 @@ const ExplorePage: React.FC = () => {
               {/* From Date Picker */}
               <Form.Item
                 name="startdate"
-                rules={[
-                  {
-                    required: true,
-                    message: "Please select a From date!",
-                  },
-                ]}
+                rules={[{ required: true, message: "Please select a From date!" }]}
                 className="w-full sm:w-1/6"
               >
                 <DatePicker
@@ -205,21 +196,14 @@ const ExplorePage: React.FC = () => {
                   placeholder="Select From Date"
                   format="YYYY-MM-DD"
                   onChange={handleFromDateChange}
-                  disabledDate={(current) =>
-                    current < dayjs().startOf("day")
-                  }
+                  disabledDate={(current) => current < dayjs().startOf("day")}
                 />
               </Form.Item>
 
               {/* To Date Picker */}
               <Form.Item
                 name="enddate"
-                rules={[
-                  {
-                    required: true,
-                    message: "Please select a To date!",
-                  },
-                ]}
+                rules={[{ required: true, message: "Please select a To date!" }]}
                 className="w-full sm:w-1/6"
               >
                 <DatePicker
