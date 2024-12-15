@@ -19,7 +19,7 @@ rtdb.ref('.info/connected').once('value', (snapshot) => {
     if (snapshot.val() === true) {
         console.log("Successfully connected to Firebase Realtime Database.");
     } else {
-        console.log("Failed to connect to Firebase Realtime Database.");
+        console.log("Successfully connected to Firebase");
     }
 });
 
