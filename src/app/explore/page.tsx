@@ -158,7 +158,7 @@ const ExplorePage: React.FC = () => {
               className="flex flex-wrap justify-center items-center gap-4"
             >
               {/* From Place */}
-              <Form.Item
+              {/* <Form.Item
                 name="fromPlace"
                 rules={[{ required: true, message: "Please input your starting place in Tamil Nadu!" }]}
                 className="w-full sm:w-1/4"
@@ -169,7 +169,7 @@ const ExplorePage: React.FC = () => {
                   placeholder="From Place"
                   className="w-full"
                 />
-              </Form.Item>
+              </Form.Item> */}
 
               {/* To Place */}
               <Form.Item
