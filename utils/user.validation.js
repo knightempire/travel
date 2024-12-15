@@ -1,8 +1,8 @@
-const { rtdb } = require('../config/db'); // Import the Firebase Realtime Database instance
+const { rtdb } = require('../config/db');
 
-// Validate user data against the schema
+
 const validateUserData = async(userData, schema) => {
-    // Validate required fields
+
     for (const field in schema) {
         if (schema[field].required && !userData[field]) {
             console.log(`${field} is required`);
