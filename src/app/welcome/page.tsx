@@ -1,5 +1,6 @@
 'use client' // This tells Next.js that this is a Client Component
 import { useEffect, useState } from 'react';
+import Breadcrumb from "@/components/Common/Breadcrumb"; // Assuming Breadcrumb is already correctly imported
 
 const WelcomePage = () => {
   const [userData, setUserData] = useState(null);
@@ -32,13 +33,18 @@ const WelcomePage = () => {
   }
 
   return (
-    <div>
-      <h1>Welcome, {userData.name}!</h1>
-      <p>Email: {userData.email}</p>
-      <img src={userData.profilePicture} alt="Profile" width="100" height="100" />
-      <p>Token: {userData.token}</p>
-    </div>
-  );   
+    <>
+      <Breadcrumb
+        pageName="Welcome Page"
+        description="This is the welcome page where we display the user's information after successful login."
+      />
+      
+      <div>
+        <h1>Welcome, {userData.name}!</h1>
+        <p>Email: {userData.email}</p>
+      </div>
+    </>
+  );
 };
 
 export default WelcomePage;
