@@ -1,3 +1,4 @@
+'use client' // This tells Next.js that this is a Client Component
 import { useEffect, useState } from 'react';
 
 const WelcomePage = () => {
