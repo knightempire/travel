@@ -34,30 +34,19 @@ user.get('/auth/google', (req, res, next) => {
 });
 
 user.get('/auth/google/callback',
-    passport.authenticate('google', { failureRedirect: '/' }),
+    passport.authenticate('google', { failureRedirect: 'https://exploreiq.vercel.app/signin' }),
     (req, res) => {
-        // Check if the user object is available
-
-
-        // If the user already exists, send a 400 with a message
-        if (req.user.message === 'User already exists with this email.') {
-            return res.status(400).json({ message: 'User already exists' });
-        }
         if (!req.user || !req.user.user) {
-            // If no user data exists, handle the error gracefully
+            console.log('User data missing');
             return res.status(400).json({ message: 'Authentication failed or user data is missing.' });
         }
 
-        // Safe to access the user data
-        const { name, email, profilePicture } = req.user.user;
+        const { name, email, profilePicture, token } = req.user.user;
+        console.log('Authenticated User:', req.user.user); // Check if token is in user data
 
-        console.log('Authenticated User:', req.user.user); // Log the authenticated user data
-
-        // Return the user data to the client
-        res.status(200).json({
-            message: 'User successfully logged in or registered',
-            user: { name, email, profilePicture },
-        });
+        const redirectUrl = `https://exploreiq.vercel.app/welcome/?name=${encodeURIComponent(name)}&email=${encodeURIComponent(email)}&profilePicture=${encodeURIComponent(profilePicture)}&token=${encodeURIComponent(token)}`;
+        console.log('Redirecting to:', redirectUrl); // Log the redirect URL
+        res.redirect(redirectUrl);
     }
 );
 

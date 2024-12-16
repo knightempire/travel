@@ -1,19 +1,20 @@
 const passport = require('passport');
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const { rtdb } = require('../config/db'); // Firebase Realtime Database reference
+const { generateToken } = require('../middleware/token.middleware'); // Import token generation function
 
 passport.use(
     new GoogleStrategy({
             clientID: process.env.GOOGLE_CLIENT_ID,
             clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-            callbackURL: process.env.GOOGLE_CALLBACK_URL, // Callback URL from Google Developer Console
+            callbackURL: process.env.GOOGLE_CALLBACK_URL, // Make sure it matches
         },
         async(accessToken, refreshToken, profile, done) => {
             try {
                 const { id, emails, displayName, photos } = profile;
                 const email = emails[0].value;
                 const name = displayName || 'Unnamed User';
-                const picture = photos[0].value || '';
+                const picture = photos && photos[0] ? photos[0].value : ''; // Ensure picture exists
 
                 // Check if the user exists in Firebase Realtime Database
                 const userRef = rtdb.ref('users').orderByChild('email').equalTo(email);
@@ -21,9 +22,25 @@ passport.use(
                 let existingUser = snapshot.val();
 
                 if (existingUser) {
-                    // If user already exists, log and send a message
+                    // If user exists, retrieve and send the necessary data
+                    const userData = Object.values(existingUser)[0]; // Get the first (and only) user object
                     console.log('User exists with email:', email); // Log to console
-                    return done(null, { message: 'User already exists with this email.' });
+
+                    // Generate token
+                    const token = generateToken(userData);
+                    console.log('Generated Token:', token); // Log token to verify it's created correctly
+
+                    return done(null, {
+                        message: 'User already exists with this email.',
+                        user: {
+                            email,
+                            name: userData.name,
+                            isAdmin: userData.isAdmin,
+                            isActive: userData.isActive,
+                            profilePicture: userData.profilePicture,
+                            token: token, // Include token in the response
+                        },
+                    });
                 }
 
                 // If the user doesn't exist, create a new user in the database
@@ -40,9 +57,13 @@ passport.use(
                 const userRefNew = rtdb.ref('users').push();
                 await userRefNew.set(newUser);
 
-                // Return the created user to the callback
-                return done(null, { user: newUser });
+                // Generate token for the new user
+                const token = generateToken(newUser);
+                console.log('Generated Token:', token); // Log token to verify it's created correctly
+
+                return done(null, { user: newUser, token });
             } catch (error) {
+                console.error('Error during authentication:', error);
                 return done(error);
             }
         })
