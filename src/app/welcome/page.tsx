@@ -51,13 +51,13 @@ const WelcomePage = () => {
           <>
             <h1 className="text-3xl font-bold">Welcome, {userData.name}!</h1>
             <p className="text-lg">Email: {userData.email}</p>
-            {userData.profilePicture && (
-              <img 
+            {/* {userData.profilePicture && (
+              <image 
                 src={userData.profilePicture} 
                 alt="Profile" 
                 className="w-24 h-24 rounded-full mt-4" 
               />
-            )}
+            )} */}
             <p className="mt-4">Token: {userData.token}</p>
           </>
         ) : (
