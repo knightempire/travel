@@ -38,7 +38,7 @@ const WelcomePage = () => {
       <img src={userData.profilePicture} alt="Profile" width="100" height="100" />
       <p>Token: {userData.token}</p>
     </div>
-  );
+  );   
 };
 
 export default WelcomePage;
